@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\hall;
+use App\Models\Hall;
 use Illuminate\Http\Request;
 
 class HallController extends Controller
@@ -41,10 +41,10 @@ class HallController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\hall  $hall
+     * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function show(hall $hall)
+    public function show(Hall $hall)
     {
         //
     }
@@ -52,10 +52,10 @@ class HallController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\hall  $hall
+     * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function edit(hall $hall)
+    public function edit(Hall $hall)
     {
         //
     }
@@ -64,10 +64,10 @@ class HallController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\hall  $hall
+     * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, hall $hall)
+    public function update(Request $request, Hall $hall)
     {
         //
     }
@@ -75,10 +75,10 @@ class HallController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\hall  $hall
+     * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(hall $hall)
+    public function destroy(Hall $hall)
     {
         //
     }
