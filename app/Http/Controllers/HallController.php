@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\HallRequest;
 use App\Models\Hall;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
 class HallController extends Controller
@@ -14,28 +17,26 @@ class HallController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Hall::paginate();
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+//     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HallRequest $request)
     {
-        //
+        if (Hall::firstWhere('name', $request->name)) {
+            return response('зал с таким названием уже существует', 409);
+        }
+        $hall_id = Hall::create($request->validated());
+        $hall = Hall::firstWhere('id', $hall_id->id);
+
+        app('App\Http\Controllers\SeatController')->store($hall->id, $hall->rows, $hall->places);
+
+        return $hall;
     }
 
     /**
@@ -44,9 +45,9 @@ class HallController extends Controller
      * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function show(Hall $hall)
+    public function show(int $id)
     {
-        //
+        return Hall::findOrFail($id);
     }
 
     /**
@@ -75,11 +76,14 @@ class HallController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hall  $hall
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hall $hall)
+    public function destroy(int $id)
     {
-        //
+        if (!Hall::destroy($id)) {
+            return response('not found', 404);
+        }
+        return response('delete was successed', 201);;
     }
 }

@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('halls', function (Blueprint $table) {
+        Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->integer('rows')->default(10);
-            $table->integer('places')->default(8);
-            $table->float('VIP_price')->default(0);
-            $table->float('usual_price')->default(0);
-            $table->boolean('on_sale')->default(false);
+            $table->integer('hall_id');
+            $table->foreign('hall_id')->references('id')->on('halls')->onDelete('cascade');
+            $table->boolean('is_VIP')->default(false);
+            $table->boolean('enable')->default(true);
+            $table->integer('number_seat')->default(0);
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('halls');
+        Schema::dropIfExists('seats');
     }
 };
