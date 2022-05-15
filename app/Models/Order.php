@@ -14,4 +14,14 @@ class Order extends Model
         'qr_code',
         'sum'
     ];
+
+    public function session()
+    {
+        return $this->belongsTo(Session::class);
+    }
+
+    public function ticket()
+    {
+        return $this->hasToMany(Ticket::class);
+    }
 }

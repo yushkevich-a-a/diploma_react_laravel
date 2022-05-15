@@ -14,4 +14,14 @@ class Ticket extends Model
         'seat_id',
         'date_session'
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function seat()
+    {
+        return $this->belongsTo(Seat::class);
+    }
 }

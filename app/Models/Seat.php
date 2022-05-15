@@ -26,5 +26,9 @@ class Seat extends Model
         return $this->belongsTo(Hall::class);
     }
 
+    public function ticket()
+    {
+        return $this->hasToMany(Ticket::class);
+    }
 
 }

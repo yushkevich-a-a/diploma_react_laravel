@@ -15,4 +15,21 @@ class Session extends Model
         'start_session',
         'finish_session',
     ];
+
+    public function hall()
+    {
+        return $this->belongsTo(Hall::class);
+    }
+
+    public function film()
+    {
+        return $this->belongsTo(Film::class);
+    }
+
+    public function order()
+    {
+        return $this->hasToMany(Order::class);
+    }
+
+
 }

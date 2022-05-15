@@ -19,6 +19,6 @@ class Film extends Model
 
     public function session()
     {
-        return;
+        return $this->hasToMany(Session::class);
     }
 }
