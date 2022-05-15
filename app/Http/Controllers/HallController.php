@@ -34,7 +34,14 @@ class HallController extends Controller
         $hall_id = Hall::create($request->validated());
         $hall = Hall::firstWhere('id', $hall_id->id);
 
-        app('App\Http\Controllers\SeatController')->store($hall->id, $hall->rows, $hall->places);
+        $amount_places = $hall->rows * $hall->places;
+
+        for($i = 1; $i <= $amount_places; $i++) {
+            Seat::create([
+                "hall_id" => $hall->id,
+                "number_seat" => $i,
+            ]);
+        }
 
         return $hall;
     }
@@ -42,23 +49,18 @@ class HallController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hall  $hall
-     * @return \Illuminate\Http\Response
+//     * @param  \App\Models\Hall  $hall
+//     * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
-        return Hall::findOrFail($id);
-    }
+        $response_data = Hall::findOrFail($id);
+        if(!$response_data) {
+            return $response_data;
+        }
+        $response_data->seats = $response_data->getSeats;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Hall  $hall
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Hall $hall)
-    {
-        //
+        return response()->json($response_data);
     }
 
     /**
@@ -68,22 +70,27 @@ class HallController extends Controller
      * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hall $hall)
+    public function update(Request $request, int $id)
     {
-        //
+        $hall = Hall::firstWhere('id', $id);
+        $hall->VIP_price = $request->VIP_price;
+        $hall->usual_price = $request->usual_price;
+        $hall->save();
+        return $hall;
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {
         if (!Hall::destroy($id)) {
             return response('not found', 404);
         }
-        return response('delete was successed', 201);;
+        return response()->json([
+            "state" => "success"
+        ],201);
     }
 }

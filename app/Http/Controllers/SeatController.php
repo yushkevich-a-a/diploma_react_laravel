@@ -14,38 +14,42 @@ class SeatController extends Controller
      */
     public function index()
     {
-
+        var_dump('index');
     }
     /**
      * Store a newly created resource in storage.
      *
-//     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
 //     * @return boolean
      */
-    public function store(int $id, int $rows, int $places)
+    public function store(Request  $request)
     {
+        $this->destroy($request->id);
         $number_seat = 1;
-        for($row = 1; $row <= $rows; $row++) {
-            for($place = 1; $place <= $places; $place++) {
-                Seat::create([
-                    "hall_id" => $id,
-                    "number_seat" => $number_seat,
-                ]);
+        foreach ($request->seats as $seat){
+            if($seat['enable']) {
+                $seat['number_seat'] = $number_seat;
                 $number_seat++;
+            } else {
+                $seat['number_seat'] = 0;
             }
+            Seat::create($seat);
         }
 
+        return response()->json([
+            "state" => "success",
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Seat  $seat
-     * @return \Illuminate\Http\Response
+//     * @param  \App\Models\Seat  $seat
+//     * @return \Illuminate\Http\Response
      */
-    public function show(Seat $seat)
+    public function show(int  $id)
     {
-        //
+        return Seat::where('hall_id', $id)->get();
     }
 
     /**
@@ -77,8 +81,8 @@ class SeatController extends Controller
      * @param  \App\Models\Seat  $seat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seat $seat)
+    public function destroy(int $hall_id)
     {
-        //
+        Seat::where('hall_id', $hall_id)->delete();
     }
 }

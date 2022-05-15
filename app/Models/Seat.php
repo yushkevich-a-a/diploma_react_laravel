@@ -23,7 +23,7 @@ class Seat extends Model
 
     public function hall()
     {
-        return $this->hasOne(Hall::class);
+        return $this->belongsTo(Hall::class);
     }
 
 

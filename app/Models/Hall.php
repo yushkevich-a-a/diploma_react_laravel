@@ -19,4 +19,10 @@ class Hall extends Model
     protected $casts = [
         'on_sale' => 'boolean',
     ];
+
+    public function getSeats()
+    {
+        return $this->hasMany(Seat::class);
+    }
+
 }
