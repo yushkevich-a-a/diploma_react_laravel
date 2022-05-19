@@ -39,22 +39,13 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+//     * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
+        return response()->json([
+            "state" => "метод показа заказа",
+        ], 201);
     }
 
     /**
@@ -62,21 +53,25 @@ class OrderController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+//     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Order $order)
     {
-        //
+        return response()->json([
+            "state" => "метод обновления заказа",
+        ], 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+//     * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)
     {
-        //
+        return response()->json([
+            "state" => "метод удаления заказа",
+        ], 201);
     }
 }

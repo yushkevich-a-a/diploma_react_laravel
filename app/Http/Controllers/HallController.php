@@ -17,7 +17,7 @@ class HallController extends Controller
      */
     public function index()
     {
-        return Hall::paginate();
+        return Hall::all();
     }
 
     /**
@@ -49,7 +49,7 @@ class HallController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \App\Models\Hall  $hall
+//     * @param  \Index\Models\Hall  $hall
 //     * @return \Illuminate\Http\Response
      */
     public function show(int $id)

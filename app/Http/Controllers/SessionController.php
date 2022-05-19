@@ -44,7 +44,7 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \App\Models\Session  $session
+//     * @param  \Index\Models\Session  $session
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
@@ -58,11 +58,13 @@ class SessionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Session  $session
-     * @return \Illuminate\Http\Response
+//     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Session $session)
     {
-
+        return response()->json([
+            "state" => "метод изменение сессии",
+        ], 201);
     }
 
     /**

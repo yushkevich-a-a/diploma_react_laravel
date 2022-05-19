@@ -14,7 +14,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        var_dump('index');
+        return Seat::paginate();
     }
     /**
      * Store a newly created resource in storage.
@@ -44,7 +44,7 @@ class SeatController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \App\Models\Seat  $seat
+//     * @param  \Index\Models\Seat  $seat
 //     * @return \Illuminate\Http\Response
      */
     public function show(int  $id)
