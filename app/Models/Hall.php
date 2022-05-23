@@ -20,7 +20,7 @@ class Hall extends Model
         'on_sale' => 'boolean',
     ];
 
-    public function getSeats()
+    public function seats()
     {
         return $this->hasMany(Seat::class);
     }

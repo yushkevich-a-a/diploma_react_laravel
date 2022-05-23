@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seat;
+use App\Models\Hall;
 use Illuminate\Http\Request;
 
 class SeatController extends Controller
@@ -23,21 +24,36 @@ class SeatController extends Controller
 //     * @return boolean
      */
     public function store(Request  $request)
-    {
-        $this->destroy($request->id);
-        $number_seat = 1;
-        foreach ($request->seats as $seat){
-            if($seat['enable']) {
-                $seat['number_seat'] = $number_seat;
-                $number_seat++;
-            } else {
-                $seat['number_seat'] = 0;
-            }
-            Seat::create($seat);
-        }
+    {   
+        $hall = Hall::firstWhere("id", $request->id);
+        if ($hall->rows !== $request->rows || $hall->places !== $request->places) {
+            $hall->rows = $request->rows;
+            $hall->places = $request->places;
+            $hall->save();
 
+            $this->destroy($request->id);
+            foreach ($request->seats as $seat){
+                Seat::create([
+                    'hall_id' => $request->id,
+                    'status' => $seat['status'],
+                    'number_seat' => $seat['number_seat'],
+                ]);
+            }
+        } else {
+            foreach ($request->seats as $seat){
+                $seatEdit = Seat::firstWhere('id', $seat['id']);
+                $seatEdit->status = $seat['status'];
+                $seatEdit->number_seat = $seat['number_seat'];
+                $seatEdit->save();
+            }
+            unset($seatEdit);    
+        }
+        unset($seat);  
+
+        $seats = Seat::where('hall_id', $request->id)->get();
         return response()->json([
             "state" => "success",
+            "data" => $seats ,
         ], 201);
     }
 
@@ -50,17 +66,6 @@ class SeatController extends Controller
     public function show(int  $id)
     {
         return Seat::where('hall_id', $id)->get();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Seat  $seat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Seat $seat)
-    {
-        //
     }
 
     /**

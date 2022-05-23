@@ -18,8 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('hall_id');
             $table->foreign('hall_id')->references('id')->on('halls')->onDelete('cascade');
-            $table->boolean('is_VIP')->default(false);
-            $table->boolean('enable')->default(true);
+            $table->string('status')->default('standart');
             $table->integer('number_seat')->default(0);
         });
     }

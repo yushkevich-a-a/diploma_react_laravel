@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('halls_id');
+            $table->integer('hall_id');
             $table->foreign('hall_id')->references('id')->on('halls')->onDelete('cascade');
             $table->integer('films_id');
             $table->foreign('films_id')->references('id')->on('halls')->onDelete('cascade');

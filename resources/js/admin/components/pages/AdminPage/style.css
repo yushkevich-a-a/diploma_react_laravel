@@ -221,6 +221,7 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
 
 .conf-step__button-trash {
   position: relative;
+  margin-left: 5px;
   width: 20px;
   height: 20px;
   vertical-align: text-top; }
@@ -360,13 +361,11 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
   .conf-step__hall .conf-step__chair {
     cursor: pointer; }
   .conf-step__hall .conf-step__hall-wrapper {
-    display: inline-block; }
-    .conf-step__hall .conf-step__hall-wrapper .conf-step__row {
-      font-size: 0; }
-    .conf-step__hall .conf-step__hall-wrapper .conf-step__row + .conf-step__row {
-      margin-top: 10px; }
-    .conf-step__hall .conf-step__hall-wrapper .conf-step__chair + .conf-step__chair {
-      margin-left: 10px; }
+    display: grid; 
+    justify-content: center;
+    gap: 10px;
+  }
+
 
 .conf-step__movies {
   display: flex;
@@ -483,44 +482,3 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
   .login__input {
     width: 100%; }
 
-.popup {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 100; }
-  .popup__title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    text-transform: uppercase; }
-  .popup.active {
-    display: block;
-    background: rgba(0, 0, 0, 0.7);
-    animation: 0.5s ease-out 0s 1 darken; }
-    .popup.active .popup__content {
-      top: 100px;
-      animation: 0.5s ease-out 0s 1 slideFromTop; }
-  .popup__container {
-    position: relative;
-    width: 100%; }
-  .popup__content {
-    position: relative;
-    top: -50vh;
-    background-color: rgba(234, 233, 235, 0.95);
-    width: 960px;
-    margin: 0 auto; }
-  .popup__header {
-    box-sizing: border-box;
-    padding: 16px 42px;
-    background-color: #63536C;
-    color: #FFFFFF; }
-  .popup__wrapper {
-    padding: 35px 104px; }
-  .popup__dismiss {
-    float: right; }
-    .popup__dismiss img {
-      height: 1em;
-      transition: .3s all ease; }
-      .popup__dismiss img:hover {
-        transform: scale(1.2);
-        transition: .3s all ease; }

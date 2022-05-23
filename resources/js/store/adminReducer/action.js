@@ -18,10 +18,10 @@ export const resetState = () => {
 
 export const fetchData = () => async (dispatch, getState) => {
   try {
-      dispatch(fetchAdminData())
-      const data = await getRequest(`api/hall`);
-      dispatch(fetchDataSuccess(data))
+      dispatch(fetchAdminData());
+      const data = await getRequest(`/hall`);
+      dispatch(fetchDataSuccess(data));
   } catch (e) {
-      dispatch(fetchDataError(e.message))
+      dispatch(fetchDataError(e.message));
   }
 }

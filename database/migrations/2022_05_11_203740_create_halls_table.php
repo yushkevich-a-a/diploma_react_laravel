@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->integer('rows')->default(10);
-            $table->integer('places')->default(8);
+            $table->integer('rows')->default(0);
+            $table->integer('places')->default(0);
             $table->float('VIP_price')->default(0);
             $table->float('usual_price')->default(0);
             $table->boolean('on_sale')->default(false);

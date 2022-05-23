@@ -11,15 +11,10 @@ class Seat extends Model
 
     protected $fillable = [
         'hall_id',
-        'is_VIP',
-        'enable',
+        'status',
         'number_seat',
     ];
 
-    protected $casts = [
-        'is_VIP' => 'boolean',
-        'enable' => 'boolean',
-    ];
 
     public function hall()
     {

@@ -29,21 +29,27 @@ class HallController extends Controller
     public function store(HallRequest $request)
     {
         if (Hall::firstWhere('name', $request->name)) {
-            return response('зал с таким названием уже существует', 409);
+            return response()->json([
+                "status" => "error",
+                "message" => "зал с таким названием уже существует",
+            ], 201);
         }
         $hall_id = Hall::create($request->validated());
         $hall = Hall::firstWhere('id', $hall_id->id);
 
-        $amount_places = $hall->rows * $hall->places;
+//        $amount_places = $hall->rows * $hall->places;
+//
+//        for($i = 1; $i <= $amount_places; $i++) {
+//            Seat::create([
+//                "hall_id" => $hall->id,
+//                "number_seat" => $i,
+//            ]);
+//        }
 
-        for($i = 1; $i <= $amount_places; $i++) {
-            Seat::create([
-                "hall_id" => $hall->id,
-                "number_seat" => $i,
-            ]);
-        }
-
-        return $hall;
+        return response()->json([
+            "status"=>"success",
+            "data"=>Hall::all(),
+            ], 201);
     }
 
     /**
@@ -58,9 +64,12 @@ class HallController extends Controller
         if(!$response_data) {
             return $response_data;
         }
-        $response_data->seats = $response_data->getSeats;
+        $response_data->seats = $response_data->seats;
 
-        return response()->json($response_data);
+        return response()->json([
+            "state" => "success",
+            "data"=>$response_data,
+        ], 201);
     }
 
     /**
@@ -70,9 +79,8 @@ class HallController extends Controller
      * @param  \App\Models\Hall  $hall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, Hall  $hall)
     {
-        $hall = Hall::firstWhere('id', $id);
         $hall->VIP_price = $request->VIP_price;
         $hall->usual_price = $request->usual_price;
         $hall->save();
@@ -90,7 +98,8 @@ class HallController extends Controller
             return response('not found', 404);
         }
         return response()->json([
-            "state" => "success"
-        ],201);
+            "state" => "success",
+            "data"=>Hall::all(),
+        ], 201);
     }
 }
