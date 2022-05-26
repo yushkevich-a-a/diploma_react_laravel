@@ -11,10 +11,28 @@ export const getRequest = async (request) => {
 export const postRequest = async (request, dataRequest) => {
   const response = await fetch(`${process.env.MIX_APP_URL}/api${request}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
+    headers : {
+      "Content-Type" : "application/json"
+  },
     body: JSON.stringify(dataRequest)
+  });
+  if (response.status < 200 || response.status >= 300) {
+      throw new Error(response.statusText);
+  }
+  const data = await response.json();
+
+  if(data.status === 'error') {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
+
+export const postFormRequest = async (request, dataRequest) => {
+  console.log(dataRequest);
+  const response = await fetch(`${process.env.MIX_APP_URL}/api${request}`, {
+    method: 'POST',
+    body: dataRequest,
   });
   if (response.status < 200 || response.status >= 300) {
       throw new Error(response.statusText);

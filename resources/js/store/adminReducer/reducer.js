@@ -2,6 +2,7 @@ const initState = {
   loading: false,
   error: null,
   data: [],
+  films: [],
 }
 
 const serviceAdminReduser = ( state = initState, action ) => {
@@ -11,6 +12,9 @@ const serviceAdminReduser = ( state = initState, action ) => {
     case 'FETCH_DATA_SUCCESS':
       const { data } = action.payload;
       return { ...state, loading: false, error: null, data };
+    case 'FETCH_FILMS_SUCCESS':
+      const { films } = action.payload;
+      return { ...state, films };
     case 'FETCH_DATA_ERROR':
       const { message } = action.payload;
       return { ...state, loading: false, error: message };

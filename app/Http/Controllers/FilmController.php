@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use App\Models\Hall;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
@@ -15,7 +16,7 @@ class FilmController extends Controller
      */
     public function index()
     {
-        return Film::paginate();
+        return Film::all();
     }
 
     /**
@@ -26,18 +27,28 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        if (Film::firstWhere('title', $request->title)) {
-            return response('фильм с таким названием уже существует', 409);
+        if ($request->hasFile('poster')) {
+            $path = $request->file('poster')->store('images', 'public');
+            $url = asset(Storage::url($path));
         }
+        // if (Film::firstWhere('title', $request->title)) {
+        //     return response('фильм с таким названием уже существует', 409);
+        // }
         $film = Film::create([
             'description' => $request->description,
             'title' => $request->title,
-            'image_url' => $request->image_url,
+            'url' => $url,
+            'path' => $path,
             'country' => $request->country,
             'duration' => $request->duration,
         ]);
 
-        return $film;
+
+        return response()->json([
+            "status"=>"success",
+            "data"=>$this->index(),
+            ], 201);
+
     }
 
     /**
@@ -76,6 +87,7 @@ class FilmController extends Controller
         if (!Film::destroy($id)) {
             return response('not found', 404);
         }
+
         return response()->json([
             "state" => "success"
         ],201);

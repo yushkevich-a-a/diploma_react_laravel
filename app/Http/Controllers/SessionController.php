@@ -49,7 +49,7 @@ class SessionController extends Controller
      */
     public function show(int $id)
     {
-        return Session::firstWhere('id', $id);
+        return Session::firstWhere('id', $id)->get();
     }
 
 

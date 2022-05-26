@@ -12,7 +12,8 @@ class Film extends Model
     protected $fillable = [
         'description',
         'title',
-        'image_url',
+        'url',
+        'path',
         'country',
         'duration',
     ];

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import ConfigSection from '../ConfigSection';
-import { postRequest, deleteRequest } from '../../../../lib/api';
-import { useDispatch, useSelector } from 'react-redux';
+import { deleteRequest } from '../../../../lib/api';
+import { useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
 import { fetchDataSuccess } from '../../../../store/adminReducer/action';
 import CreateHallPopup from '../CreateHallPopup';

@@ -35,7 +35,7 @@ Route::apiResource('hall', \App\Http\Controllers\HallController::class);
 //Route::get('/film', [\Index\Http\Controllers\FilmController::class, 'index']);
 //Route::post('/film', [\Index\Http\Controllers\FilmController::class, 'store']);
 //Route::delete('/film/{id}', [\Index\Http\Controllers\FilmController::class, 'update']);
-Route::apiResource('films', \App\Http\Controllers\FilmController::class);
+Route::apiResource('film', \App\Http\Controllers\FilmController::class);
 
 //Route::apiResource('/seats', \Index\Http\Controllers\SeatController::class);
 //Route::apiResource('hall', \Index\Http\Controllers\HallController::class);

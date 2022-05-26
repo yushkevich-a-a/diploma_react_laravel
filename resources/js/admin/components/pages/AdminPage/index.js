@@ -4,7 +4,7 @@ import './style.css';
 import Header from '../../organisms/Header';
 import Main from '../../organisms/Main';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../../../../store/adminReducer/action';
+import { fetchData, fetchFilms } from '../../../../store/adminReducer/action';
 
 function AdminPage(props) {
   const { loading } = useSelector( store => store.adminReduser );
@@ -12,6 +12,7 @@ function AdminPage(props) {
 
   useEffect(() => {
     dispatch(fetchData());
+    dispatch(fetchFilms());
   }, [])
   
 

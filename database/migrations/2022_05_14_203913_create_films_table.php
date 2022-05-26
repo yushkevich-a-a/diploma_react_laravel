@@ -18,7 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('description');
             $table->string('title');
-            $table->string('image_url');
+            $table->string('url');
+            $table->string('path');
             $table->string('country');
             $table->integer('duration');
         });
