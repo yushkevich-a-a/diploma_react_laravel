@@ -1,42 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { getRequest } from '../../../../lib/api';
+import CreateSessionPopup from '../CreateSessionPopup';
+import FilmOnTimeLine from '../FilmOnTimeLine';
 
 function SeansHall(props) {
   const { item } = props;
   const [ seansData, setSeansData ] = useState([]);
-  
-  useEffect(() => {
-    
+  const [ openCreate, setOpenCreate ] = useState(false);
 
-    document.addEventListener('click', listnerFunc);
-    return () => {
-      document.removeEventListener('click', listnerFunc);
-    }
+  useEffect(async () => {
+    const data = await getRequest(`/session/${item.id}`);
+    setSeansData([...data]);
   }, []);
 
-  const listnerFunc = (e) => {
-    const element = e.target;
-    if (element.closest('.conf-step__seances-movie')) {
-      console.log('событие на фильме');
-      return;
-    }
-    if (element.closest('.conf-step__seances-timeline')) {
-      console.log('событие на шкале времени');
-      return;
-    }
+  const openPopupCreateSession = () => {
+    setOpenCreate(!openCreate);
+  }
+
+  const handleUpdateData = (data) => {
+    setSeansData(data.slice());
   }
 
   return (
     <div className="conf-step__seances-hall">
-      <h3 className="conf-step__seances-title">{item.title}</h3>
-      <div className="conf-step__seances-timeline">
-        {/* {
-          seansData.map( item => <div className="conf-step__seances-movie" style={{width: "60px", backgroundColor: "rgb(133, 255, 137)", left: "0"}}>
-            <p className="conf-step__seances-movie-title">Миссия выполнима</p>
-            <p className="conf-step__seances-movie-start">00:00</p>
-          </div> )
-        }       */}
+      <h3 className="conf-step__seances-title">{item.name}</h3>
+      <div className="conf-step__seances-timeline" onClick={openPopupCreateSession}>
+        {
+          seansData.map( item => <FilmOnTimeLine key={item.id} item={item} handleUpdateData={handleUpdateData}/> )
+        } 
       </div>
+      {
+        openCreate && <CreateSessionPopup item={item} handleUpdateData={handleUpdateData} handleClosePopup={openPopupCreateSession}/>
+      }
     </div>
   )
 }

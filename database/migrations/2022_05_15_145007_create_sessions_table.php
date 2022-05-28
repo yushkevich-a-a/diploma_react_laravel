@@ -18,10 +18,11 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('hall_id');
             $table->foreign('hall_id')->references('id')->on('halls')->onDelete('cascade');
-            $table->integer('films_id');
-            $table->foreign('films_id')->references('id')->on('halls')->onDelete('cascade');
-            $table->dateTime('start_session');
-            $table->dateTime('finish_session');
+            $table->integer('film_id');
+            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
+            $table->integer('duraton_session');
+            $table->integer('start_session');
+            $table->integer('finish_session');
         });
     }
 

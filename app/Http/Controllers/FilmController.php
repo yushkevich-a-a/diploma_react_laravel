@@ -84,7 +84,10 @@ class FilmController extends Controller
      */
     public function destroy(int $id)
     {
-        if (!Film::destroy($id)) {
+
+        $film = Film::firstWhere('id', $id);
+        Storage::delete($film->path);
+        if (!$film->delete()) {
             return response('not found', 404);
         }
 

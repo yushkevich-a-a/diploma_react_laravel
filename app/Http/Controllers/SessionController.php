@@ -27,18 +27,42 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        if (Session::firstWhere('title', $request->title)) {
-            return response('временные параметры сессии выбраны неверно ', 409);
-        }
-        $session = Session::create([
-            'halls_id' => $request->halls_id,
-            'films_id' => $request->films_id,
-            'start_session' => $request->start_session,
-            'finish_session' => $request->finish_session,
+        $film = Film::firstWhere('id', $request->film_id);
+
+        $start_session = $request->start_session;
+        $finish_session = $start_session + $film->duration;
+
+         $sessions = Session::where('hall_id', $request->hall_id)->get();
+
+         foreach ($sessions as $session) {
+             if ($start_session >= $session->start_session && $start_session <= $session->finish_session ) {
+                 return response()->json([
+                     "status"=>"error",
+                     "data"=>'start get to diapason',
+                     ], 201);
+             }
+             if ($finish_session >= $session->start_session && $finish_session <= $session->finish_session ) {
+                 return response()->json([
+                     "status"=>"error",
+                     "data"=>'end get to diapason',
+                     ], 201);
+             }
+         }
+
+        $newSession = Session::create([
+            'hall_id' => $request->hall_id,
+            'film_id' => $request->film_id,
+            'duraton_session' => $film->duration,
+            'start_session' => $start_session,
+            'finish_session' => $finish_session,
         ]);
 
 
-        return $session;
+        $newSessionsList = Session::where('hall_id', $request->hall_id)->get();
+        return response()->json([
+            "status"=>"success",
+            "data"=>$newSessionsList,
+            ], 201);
     }
 
     /**
@@ -49,7 +73,7 @@ class SessionController extends Controller
      */
     public function show(int $id)
     {
-        return Session::firstWhere('id', $id)->get();
+        return Session::where('hall_id', $id)->get();
     }
 
 
@@ -75,11 +99,15 @@ class SessionController extends Controller
      */
     public function destroy(int $id)
     {
+        $hall_id = Session::firstWhere('id', $id)->hall_id;
         if (!Session::destroy($id)) {
             return response('not found', 404);
         }
+        $newSeelionList = Session::where('hall_id', $hall_id)->get();
+
         return response()->json([
-            "state" => "success"
+            "state" => "success",
+            "data" => $newSeelionList,
         ],201);
     }
 }
