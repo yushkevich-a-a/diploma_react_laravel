@@ -4,15 +4,23 @@ import './style.css';
 import Header from '../../organisms/Header';
 import Main from '../../organisms/Main';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, fetchFilms } from '../../../../store/adminReducer/action';
+import { fetchAdminData, fetchFilms } from '../../../../store/adminReducer/action';
+import GlobalLoader from '../../organisms/Loaders/GlobalLoader';
+import Error from '../../organisms/Errors/Error';
+import { useNavigate } from 'react-router';
 
 function AdminPage(props) {
-  const { loading } = useSelector( store => store.adminReduser );
+  const { loading, error } = useSelector( store => store.adminReduser );
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(fetchData());
-    dispatch(fetchFilms());
+    if (localStorage.getItem('token')) {
+      dispatch(fetchAdminData());
+      dispatch(fetchFilms());
+    } else {
+      navigate('/login', { replace: true })
+    }
   }, [])
   
 
@@ -20,11 +28,12 @@ function AdminPage(props) {
     <>
       <Header />
       {
-        loading && <div>загрузка</div>
+        loading && <GlobalLoader />
       }
       {
-        !loading && <Main/>
+        error && <Error error={error} />
       }
+      <Main/>
     </>
   )
 }

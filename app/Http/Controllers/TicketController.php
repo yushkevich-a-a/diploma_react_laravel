@@ -26,7 +26,7 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         return response()->json([
-            "state" => "метод сохраниения билетов",
+            "status" => "метод сохраниения билетов",
         ], 201);
     }
 
@@ -39,7 +39,7 @@ class TicketController extends Controller
     public function show(Ticket $ticket)
     {
         return response()->json([
-            "state" => "метод показа билетов",
+            "status" => "метод показа билетов",
         ], 201);
     }
 
@@ -53,7 +53,7 @@ class TicketController extends Controller
     public function update(Request $request, Ticket $ticket)
     {
         return response()->json([
-            "state" => "метод изменения билетов",
+            "status" => "метод изменения билетов",
         ], 201);
     }
 
@@ -66,7 +66,7 @@ class TicketController extends Controller
     public function destroy(Ticket $ticket)
     {
         return response()->json([
-            "state" => "метод удаления билетов",
+            "status" => "метод удаления билетов",
         ], 201);
     }
 }

@@ -1,9 +1,14 @@
+
+
 export const getRequest = async (request) => {
   const response = await fetch(`${process.env.MIX_APP_URL}/api${request}`);
   if (response.status < 200 || response.status >= 300) {
       throw new Error(response.statusText);
   }
   const data = await response.json();
+  if (data.status === 'error') {
+    throw new Error(data.data);
+  }
 
   return data;
 }
@@ -16,24 +21,30 @@ export const postRequest = async (request, dataRequest) => {
   },
     body: JSON.stringify(dataRequest)
   });
+  if (response.status === 422) {
+    const errorMessages = await response.json()
+    throw new Error(Object.values(errorMessages).join(' и '));
+  }
   if (response.status < 200 || response.status >= 300) {
       throw new Error(response.statusText);
   }
   const data = await response.json();
-
-  if(data.status === 'error') {
-    throw new Error(data.message);
+  if (data.status === 'error') {
+    throw new Error(data.data);
   }
-
   return data;
 }
 
 export const postFormRequest = async (request, dataRequest) => {
-  console.log(dataRequest);
+
   const response = await fetch(`${process.env.MIX_APP_URL}/api${request}`, {
     method: 'POST',
     body: dataRequest,
   });
+  if (response.status === 422) {
+    const errorMessages = await response.json()
+    throw new Error(Object.values(errorMessages).join(' и '));
+  }
   if (response.status < 200 || response.status >= 300) {
       throw new Error(response.statusText);
   }
@@ -58,9 +69,8 @@ export const putRequest = async (request, dataRequest) => {
       throw new Error(response.statusText);
   }
   const data = await response.json();
-
   if(data.status === 'error') {
-    throw new Error(data.message);
+    throw new Error(data.data);
   }
 
   return data;

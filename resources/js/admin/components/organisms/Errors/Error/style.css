@@ -1,0 +1,38 @@
+@keyframes slideFromTopError {
+  0% {
+    top: -50vh; }
+  100% {
+    top: 30px; } }
+
+  @keyframes hideError {
+    0% {
+      top: 30px; }
+    100% {
+      top: -50vh; } }
+
+.error-wrapper {
+  position: fixed;
+  left: 0;
+  top: 30px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  animation: 0.5s ease-out 0s 1 slideFromTopError;
+}
+
+.error-message {
+  font-size: 2.8rem;
+  margin: 10px;
+  padding: 10px 30px;
+  color: red;
+  border: 5px solid red;
+  border-radius: 20px;
+  background: rgb(0, 0, 0, 0.8);
+}
+
+.hide_error {
+  top: -50vh;
+  animation: 0.5s ease-out 0s 1 hideError;
+}

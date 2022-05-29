@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function ConfigSection(props) {
   const { title } = props;
@@ -23,6 +23,6 @@ function ConfigSection(props) {
   )
 }
 
-ConfigSection.propTypes = {}
+ConfigSection.propTypes = {};
 
-export default ConfigSection
+export default ConfigSection;

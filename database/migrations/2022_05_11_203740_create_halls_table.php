@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('rows')->default(0);
             $table->integer('places')->default(0);
-            $table->float('VIP_price')->default(0);
-            $table->float('usual_price')->default(0);
+            $table->float('VIP_price')->default(350);
+            $table->float('usual_price')->default(150);
             $table->boolean('on_sale')->default(false);
         });
     }

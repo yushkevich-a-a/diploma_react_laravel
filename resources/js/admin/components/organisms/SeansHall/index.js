@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { getRequest } from '../../../../lib/api';
-import CreateSessionPopup from '../CreateSessionPopup';
+import CreateSessionPopup from '../Popups/CreateSessionPopup';
 import FilmOnTimeLine from '../FilmOnTimeLine';
 
 function SeansHall(props) {

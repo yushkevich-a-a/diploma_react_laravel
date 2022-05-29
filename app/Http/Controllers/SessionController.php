@@ -87,7 +87,7 @@ class SessionController extends Controller
     public function update(Request $request, Session $session)
     {
         return response()->json([
-            "state" => "метод изменение сессии",
+            "status" => "метод изменение сессии",
         ], 201);
     }
 
@@ -106,7 +106,7 @@ class SessionController extends Controller
         $newSeelionList = Session::where('hall_id', $hall_id)->get();
 
         return response()->json([
-            "state" => "success",
+            "status" => "success",
             "data" => $newSeelionList,
         ],201);
     }

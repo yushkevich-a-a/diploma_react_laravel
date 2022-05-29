@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import Popup from '../Popup';
-import { postRequest } from '../../../../lib/api';
-import Button from '../../atoms/Button/Button';
-import { fetchDataSuccess } from '../../../../store/adminReducer/action';
+import Popup from '../Popup'
+import { postRequest } from '../../../../../lib/api';
+import Button from '../../../atoms/Button/Button';
+import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../../store/adminReducer/action';
 
 function CreateHallPopup(props) {
   const { handleClosePopup } = props;
@@ -17,12 +17,13 @@ function CreateHallPopup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(fetchData());
     try {
-      const data = await postRequest('/hall', { name: dataField });
+      const data = await postRequest('/hall', { name: dataField.toLocaleLowerCase() });
       dispatch(fetchDataSuccess(data.data));
       handleClosePopup();
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

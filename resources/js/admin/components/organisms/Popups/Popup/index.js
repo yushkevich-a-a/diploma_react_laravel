@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import close from '../../../assets/close.png';
+import close from '../../../../assets/close.png';
 import './style.css';
 
 function Popup(props) {

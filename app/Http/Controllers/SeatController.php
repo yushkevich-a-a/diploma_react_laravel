@@ -15,7 +15,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        return Seat::paginate();
+        return Seat::all();
     }
     /**
      * Store a newly created resource in storage.
@@ -52,7 +52,7 @@ class SeatController extends Controller
 
         $seats = Seat::where('hall_id', $request->id)->get();
         return response()->json([
-            "state" => "success",
+            "status" => "success",
             "data" => $seats ,
         ], 201);
     }
@@ -60,12 +60,16 @@ class SeatController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \Index\Models\Seat  $seat
-//     * @return \Illuminate\Http\Response
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
      */
     public function show(int  $id)
     {
-        return Seat::where('hall_id', $id)->get();
+        $seats = Seat::where('hall_id', $id)->get();
+        return response()->json([
+            "status" => "success",
+            "data" => $seats ,
+        ], 201);
     }
 
     /**

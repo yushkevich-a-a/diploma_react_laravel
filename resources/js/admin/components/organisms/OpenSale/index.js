@@ -4,8 +4,8 @@ import ConfigSection from '../ConfigSection';
 import SelectHall from '../SelectHall';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
-import { putRequest } from '../../../../lib/api';
-import { fetchDataSuccess } from '../../../../store/adminReducer/action';
+import { getRequest, putRequest } from '../../../../lib/api';
+import { fetchData, fetchDataComplete, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/action';
 
 function OpenSale(props) {
   const { data } = useSelector( store => store.adminReduser );
@@ -14,28 +14,37 @@ function OpenSale(props) {
 
   useEffect(() => {
     setHallData({...data[0]});
-  },[])
+  },[]);
 
-  const setOnSale = (id) => {
-    setHallData({...data.find( item => item.id === id )});
-  };
+  const getDataHall = async (id) => {
+    dispatch(fetchData());
+    try {
+      const data = await getRequest(`/hall/${id}`);
+      dispatch(fetchDataComplete());
+      setHallData(data.data);
+    } catch (e) {
+      dispatch(fetchDataError(e.message));
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(fetchData());
     try {
       const reqData = {
         on_sale: !hallData.on_sale,
       }
       const data = await putRequest(`/hall/${hallData.id}`, { reqData });
-      dispatch(fetchDataSuccess([...data.data]));                                 
+      dispatch(fetchDataComplete());  
+      setHallData( prevState => ({...prevState, on_sale: data.data.on_sale}))                            
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
   
   return (
     <ConfigSection title={'открыть продажи'}>
-      <SelectHall handleRequestData={setOnSale} resetData={setHallData} name='on_sale'/>
+      <SelectHall handleRequestData={getDataHall} resetData={setHallData} name='on_sale'/>
       {
         hallData && !hallData.on_sale && <Button handleClick={handleSubmit} title='открыть продажу билетов'/>
       }

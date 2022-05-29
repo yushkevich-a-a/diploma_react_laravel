@@ -44,7 +44,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return response()->json([
-            "state" => "метод показа заказа",
+            "status" => "метод показа заказа",
         ], 201);
     }
 
@@ -58,7 +58,7 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         return response()->json([
-            "state" => "метод обновления заказа",
+            "status" => "метод обновления заказа",
         ], 201);
     }
 
@@ -71,7 +71,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         return response()->json([
-            "state" => "метод удаления заказа",
+            "status" => "метод удаления заказа",
         ], 201);
     }
 }

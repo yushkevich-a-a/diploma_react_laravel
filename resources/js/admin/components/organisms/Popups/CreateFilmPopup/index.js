@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Popup from '../Popup'
-import { postFormRequest } from '../../../../lib/api';
+import { postFormRequest } from '../../../../../lib/api';
 import { useDispatch } from 'react-redux';
-import Button from '../../atoms/Button/Button';
-import FormRow from '../../molecules/InputRow';
-import TextareaRow from '../../molecules/TextareaRow';
-import InputFileRow from '../../molecules/InputFileRow';
-import { fetchFilmsSuccess } from '../../../../store/adminReducer/action';
+import Button from '../../../atoms/Button/Button';
+import FormRow from '../../../molecules/InputRow';
+import TextareaRow from '../../../molecules/TextareaRow';
+import InputFileRow from '../../../molecules/InputFileRow';
+import { fetchData, fetchDataError, fetchFilmsSuccess } from '../../../../../store/adminReducer/action';
 
 const initData = {
   title: '',
@@ -36,6 +36,7 @@ function CreateFilmPopup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(fetchData());
     try {
       const fd = new FormData();
       fd.append('poster', dataField.poster);
@@ -48,7 +49,7 @@ function CreateFilmPopup(props) {
       dispatch(fetchFilmsSuccess(data.data));
       resetDataField();
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Popup from '../Popup';
-import { useSelector } from 'react-redux';
-import Button from '../../atoms/Button/Button';
-import { postRequest } from '../../../../lib/api';
+import Popup from '../Popup'
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '../../../atoms/Button/Button';
+import { postRequest } from '../../../../../lib/api';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/action';
 
 const intData = {
   start_time: '00:00', 
@@ -14,6 +15,7 @@ function CreateSessionPopup(props) {
   const { films } = useSelector( store => store.adminReduser );
   const { handleUpdateData, handleClosePopup, item } = props;
   const [ dataField, setDataField ] = useState({...intData});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (films.length === 0) {
@@ -34,6 +36,7 @@ function CreateSessionPopup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(fetchData());
     try {
       const timeArr = dataField.start_time.split(':');
       const startTimeInMinutes = Number(timeArr[0]) * 60 + Number(timeArr[1])
@@ -42,10 +45,11 @@ function CreateSessionPopup(props) {
         film_id: films.find(item => item.title === dataField.film).id,
         hall_id: item.id
       });
+      dispatch(fetchDataComplete());
       resetDataField();
       handleUpdateData(data.data);
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

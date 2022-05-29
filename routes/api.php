@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/token/create', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::apiResource('hall', \App\Http\Controllers\HallController::class);
+    Route::apiResource('seats', \App\Http\Controllers\SeatController::class);
+    Route::apiResource('film', \App\Http\Controllers\FilmController::class);
+    Route::apiResource('session', \App\Http\Controllers\SessionController::class);    
 });
 
-
-
-Route::apiResource('hall', \App\Http\Controllers\HallController::class);
-Route::apiResource('seats', \App\Http\Controllers\SeatController::class);
-Route::apiResource('film', \App\Http\Controllers\FilmController::class);
-Route::apiResource('session', \App\Http\Controllers\SessionController::class);

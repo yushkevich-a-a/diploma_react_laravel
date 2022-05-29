@@ -5,9 +5,12 @@ import { getRequest, postRequest } from '../../../../lib/api';
 import Hall from '../Hall';
 import Button from '../../atoms/Button/Button';
 import SelectHall from '../SelectHall';
+import { useDispatch } from 'react-redux';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/action';
 
 function EditHall(props) {
   const [ hallData, setHallData ] = useState(null);
+  const dispatch = useDispatch()
 
   const handleChangeStatusSeat = (id) => {
     const newArr = hallData.seats.slice();
@@ -18,11 +21,13 @@ function EditHall(props) {
   }
 
   const getDataHall = async (id) => {
+    dispatch(fetchData());
     try {
       const data = await getRequest(`/hall/${id}`);
+      dispatch(fetchDataComplete());
       setHallData(data.data);
     } catch (e) {
-      console.log(e.message)
+      dispatch(fetchDataError(e.message));
     }
   }
 
@@ -38,15 +43,11 @@ function EditHall(props) {
   }
 
   const handleSubmit = async () => {
+    dispatch(fetchData());
     try {
       let numberSeat = 1;
       const prepareSeats = hallData.seats.map( item => {
-        if(item.status === 'disable') {
-          item.number_seat = 0
-        } else {
-          item.number_seat = numberSeat;
-          numberSeat++;
-        }
+        item.number_seat = (item.status === 'disable') ? 0 : numberSeat++;
         return item;
       })
 
@@ -54,9 +55,10 @@ function EditHall(props) {
                                               rows: Number(hallData.rows), 
                                               places: Number(hallData.places), 
                                               seats: prepareSeats});
+      dispatch(fetchDataComplete());
       setHallData( prevState => ({...prevState, seats: data.data}));                                 
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

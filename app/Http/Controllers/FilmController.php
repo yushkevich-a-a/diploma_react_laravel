@@ -6,6 +6,7 @@ use App\Models\Film;
 use App\Models\Hall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreFilmRequest;
 
 class FilmController extends Controller
 {
@@ -25,28 +26,27 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFilmRequest $request)
     {
-        if ($request->hasFile('poster')) {
-            $path = $request->file('poster')->store('images', 'public');
-            $url = asset(Storage::url($path));
-        }
-        // if (Film::firstWhere('title', $request->title)) {
-        //     return response('фильм с таким названием уже существует', 409);
-        // }
+
+        $validated = $request->validated();
+
+        $path = $request->file('poster')->store('images', 'public');
+        $url = asset(Storage::url($path));
+
         $film = Film::create([
-            'description' => $request->description,
-            'title' => $request->title,
+            'description' => $validated['description'],
+            'title' => $validated['title'],
             'url' => $url,
             'path' => $path,
-            'country' => $request->country,
-            'duration' => $request->duration,
+            'country' => $validated['country'],
+            'duration' => $validated['duration'],
         ]);
 
 
         return response()->json([
             "status"=>"success",
-            "data"=>$this->index(),
+            "data"=>Film::all(),
             ], 201);
 
     }
@@ -67,12 +67,12 @@ class FilmController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Film  $film
-//     * @return \Illuminate\Http\Response
+    * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Film $film)
     {
         return response()->json([
-            'state' => 'здесь типа изменение состояния фильма, редактирование',
+            'status' => 'здесь типа изменение состояния фильма, редактирование',
         ], 201);
     }
 
@@ -92,7 +92,7 @@ class FilmController extends Controller
         }
 
         return response()->json([
-            "state" => "success"
+            "status" => "success"
         ],201);
     }
 }

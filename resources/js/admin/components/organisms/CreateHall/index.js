@@ -2,25 +2,30 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import ConfigSection from '../ConfigSection';
 import { deleteRequest } from '../../../../lib/api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
-import { fetchDataSuccess } from '../../../../store/adminReducer/action';
-import CreateHallPopup from '../CreateHallPopup';
+import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/action';
+import CreateHallPopup from '../Popups/CreateHallPopup';
 
 function CreateHall(props) {
   const { data } = useSelector( store => store.adminReduser );
   const [ openPopup, setOpenPopup ] = useState(false);
+  const dispatch = useDispatch()
 
   const handleClosePopup = () => {
     setOpenPopup(!openPopup);
   }
 
   const handleDelete = async (id) => {
+    dispatch(fetchData());
     try {
       const data = await deleteRequest(`/hall/${id}`);
+      if (data.status === 'error') {
+        throw new Error(data.data);
+      }
       dispatch(fetchDataSuccess(data.data));
     } catch(e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

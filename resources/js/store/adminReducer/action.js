@@ -1,7 +1,11 @@
 import { getRequest } from "../../lib/api";
 
-export const fetchAdminData = () => {
-  return { type: 'FETCH_ADMIN_DATA' };
+export const fetchData = () => {
+  return { type: 'FETCH_DATA' };
+}
+
+export const fetchDataComplete = () => {
+  return { type: 'FETCH_DATA_COMPLETE' };
 }
 
 export const fetchDataSuccess = (data) => {
@@ -13,18 +17,22 @@ export const fetchFilmsSuccess = (films) => {
 }
 
 export const fetchDataError = (message) => {
-  return { type: 'FETCH_DATA_ERROR', payload: { message } };
+  return { type: 'FETCH_ERROR', payload: { message } };
+}
+
+export const fetchErrorComplete = (message) => {
+  return { type: 'FETCH_ERROR_COMPLETE' };
 }
 
 export const resetState = () => {
   return { type: 'RESET_STATE' };
 }
 
-export const fetchData = () => async (dispatch, getState) => {
+export const fetchAdminData = () => async (dispatch, getState) => {
   try {
-      dispatch(fetchAdminData());
+      dispatch(fetchData());
       const data = await getRequest(`/hall`);
-      dispatch(fetchDataSuccess(data));
+      dispatch(fetchDataSuccess(data.data));
   } catch (e) {
       dispatch(fetchDataError(e.message));
   }

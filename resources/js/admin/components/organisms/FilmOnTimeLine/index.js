@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import DeleteSessionPopup from '../DeleteSessionPopup';
+import DeleteSessionPopup from '../Popups/DeleteSessionPopup';
+
+const colorFilm = [ '#caff85', '#85ff89', '#85ffd3', '#85e2ff', '#8599ff', '#ba85ff', '#ff85fb', '#ff85b1', '#ffa285']
 
 function FilmOnTimeLine(props) {
   const { films } = useSelector( store => store.adminReduser );
   const { item, handleUpdateData } = props;
   const [ openDelete, setDeleteCreate ] = useState(false);
-  const film = films.find( film => Number(film.id) === Number(item.film_id));
+  const filmIndex = films.findIndex( film => Number(film.id) === Number(item.film_id));
+  const film = films[filmIndex]
   const timestartMinutes = item.start_session % 60;
   const timestartHours = (item.start_session - timestartMinutes) / 60;
   
@@ -22,7 +25,7 @@ function FilmOnTimeLine(props) {
 
   return (
       <div className="conf-step__seances-movie" onClick={handleClick}
-      style={{width: `${item.duraton_session * 0.5}px`, backgroundColor: "rgb(133, 255, 137)", left: `${item.start_session * 0.5}px`}}>
+      style={{width: `${item.duraton_session * 0.5}px`, backgroundColor: colorFilm[filmIndex], left: `${item.start_session * 0.5}px`}}>
         <p className="conf-step__seances-movie-title">{film.title}</p>
         <p className="conf-step__seances-movie-start">{timestartHours}:{timestartMinutes}</p>
         {

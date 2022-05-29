@@ -1,20 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { deleteRequest } from '../../../../lib/api';
+import { deleteRequest } from '../../../../../lib/api';
 import Popup from '../Popup';
-import Button from '../../atoms/Button/Button';
+import Button from '../../../atoms/Button/Button';
+import { useDispatch } from 'react-redux';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/action';
 
 function DeleteSessionPopup(props) {
   const { handleUpdateData, handleClosePopup, sessionId, filmTitle } = props;
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(fetchData());
     try {
       const data = await deleteRequest(`/session/${sessionId}`);
+      dispatch(fetchDataComplete());
       handleUpdateData(data.data);
       handleClosePopup();
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchDataError(e.message));
     }
   }
 

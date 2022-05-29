@@ -8,6 +8,8 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class HallRequest extends FormRequest
 {
+
+    protected $stopOnFirstFailure = true;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,15 +28,16 @@ class HallRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'unique:halls'],
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'A brand is required',
-            'name.string' => 'A brand must be a string',
+            'name.required' => 'Название зала не должно быть пустым',
+            'name.string' => 'Название зала должно быть строкой',
+            'name.unique' => 'Зал с таким названием уже существует',
         ];
     }
 

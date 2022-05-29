@@ -17,7 +17,10 @@ class HallController extends Controller
      */
     public function index()
     {
-        return Hall::all();
+        return response()->json([
+            "status"=>"success",
+            "data"=>Hall::all(),
+            ], 201);
     }
 
     /**
@@ -28,12 +31,6 @@ class HallController extends Controller
      */
     public function store(HallRequest $request)
     {
-        if (Hall::firstWhere('name', $request->name)) {
-            return response()->json([
-                "status" => "error",
-                "message" => "зал с таким названием уже существует",
-            ], 201);
-        }
         $hall_id = Hall::create($request->validated());
         $hall = Hall::firstWhere('id', $hall_id->id);
 
@@ -46,8 +43,8 @@ class HallController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \Index\Models\Hall  $hall
-//     * @return \Illuminate\Http\Response
+    * @param  \Index\Models\Hall  $hall
+    * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
@@ -58,7 +55,7 @@ class HallController extends Controller
         $response_data->seats = $response_data->seats;
 
         return response()->json([
-            "state" => "success",
+            "status" => "success",
             "data"=>$response_data,
         ], 201);
     }
@@ -72,13 +69,30 @@ class HallController extends Controller
      */
     public function update(Request $request, Hall  $hall)
     {
+        if (isset($request->reqData['VIP_price']) && isset($request->reqData['usual_price'])) {
+            if ($request->reqData['VIP_price'] <= 0 || $request->reqData['usual_price'] <= 0)
+            {
+                return response()->json([
+                    'status'=>'error',
+                    'data'=> "значение полей цены не может быть меньше нуля",
+                ], 201);
+            }
+            if (($request->reqData['VIP_price']) < ($request->reqData['usual_price']))
+            {
+                return response()->json([
+                    'status'=>'error',
+                    'data'=> "стоимость VIP мест не может быть меньше обычных",
+                ], 201);
+            }
+        }
+
         foreach( $request->reqData as $key=>$value) {
             $hall[$key] = $value;
         }
         $hall->save();
         return response()->json([
             'status'=>'success',
-            'data'=>$this->index(),
+            'data'=>$hall,
         ], 201);
     }
 
@@ -93,7 +107,7 @@ class HallController extends Controller
             return response('not found', 404);
         }
         return response()->json([
-            "state" => "success",
+            "status" => "success",
             "data"=>Hall::all(),
         ], 201);
     }
