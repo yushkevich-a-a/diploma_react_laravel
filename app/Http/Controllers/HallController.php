@@ -37,15 +37,6 @@ class HallController extends Controller
         $hall_id = Hall::create($request->validated());
         $hall = Hall::firstWhere('id', $hall_id->id);
 
-//        $amount_places = $hall->rows * $hall->places;
-//
-//        for($i = 1; $i <= $amount_places; $i++) {
-//            Seat::create([
-//                "hall_id" => $hall->id,
-//                "number_seat" => $i,
-//            ]);
-//        }
-
         return response()->json([
             "status"=>"success",
             "data"=>Hall::all(),
@@ -81,10 +72,14 @@ class HallController extends Controller
      */
     public function update(Request $request, Hall  $hall)
     {
-        $hall->VIP_price = $request->VIP_price;
-        $hall->usual_price = $request->usual_price;
+        foreach( $request->reqData as $key=>$value) {
+            $hall[$key] = $value;
+        }
         $hall->save();
-        return $hall;
+        return response()->json([
+            'status'=>'success',
+            'data'=>$this->index(),
+        ], 201);
     }
 
     /**

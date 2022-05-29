@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { fetchFilms } from '../../../../store/adminReducer/action'
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { fetchFilms } from '../../../../store/adminReducer/action';
 import { useDispatch, useSelector } from 'react-redux'
 
 function FilmsList(props) {

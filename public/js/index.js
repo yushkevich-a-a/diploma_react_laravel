@@ -6834,7 +6834,6 @@ function EditPrice(props) {
 
             case 3:
               data = _context.sent;
-              console.log(data);
               setHallData(function (prevState) {
                 return _objectSpread(_objectSpread({}, prevState), {}, {
                   id: data.data.id,
@@ -6842,20 +6841,20 @@ function EditPrice(props) {
                   VIP_price: data.data.VIP_price
                 });
               });
-              _context.next = 11;
+              _context.next = 10;
               break;
 
-            case 8:
-              _context.prev = 8;
+            case 7:
+              _context.prev = 7;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0.message);
 
-            case 11:
+            case 10:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee, null, [[0, 7]]);
     }));
 
     return function getPriceData(_x) {
@@ -6873,19 +6872,24 @@ function EditPrice(props) {
 
   var handleSubmit = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
-      var data;
+      var reqData, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               e.preventDefault();
               _context2.prev = 1;
-              _context2.next = 4;
-              return (0,_lib_api__WEBPACK_IMPORTED_MODULE_4__.putRequest)("/hall/".concat(hallData.id), _objectSpread({}, hallData));
+              reqData = {
+                usual_price: hallData.usual_price,
+                VIP_price: hallData.VIP_price
+              };
+              _context2.next = 5;
+              return (0,_lib_api__WEBPACK_IMPORTED_MODULE_4__.putRequest)("/hall/".concat(hallData.id), {
+                reqData: reqData
+              });
 
-            case 4:
+            case 5:
               data = _context2.sent;
-              console.log(data);
               setHallData(_objectSpread({}, data));
               _context2.next = 12;
               break;
@@ -7298,7 +7302,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditHall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../EditHall */ "./resources/js/admin/components/organisms/EditHall/index.js");
 /* harmony import */ var _EditPrice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../EditPrice */ "./resources/js/admin/components/organisms/EditPrice/index.js");
 /* harmony import */ var _EditSeanses__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../EditSeanses */ "./resources/js/admin/components/organisms/EditSeanses/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _OpenSale__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../OpenSale */ "./resources/js/admin/components/organisms/OpenSale/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7309,14 +7315,164 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Main(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("main", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("main", {
     className: "conf-steps",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_CreateHall__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditHall__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditPrice__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditSeanses__WEBPACK_IMPORTED_MODULE_4__["default"], {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_CreateHall__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditHall__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditPrice__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditSeanses__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_OpenSale__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
   });
 }
 
 Main.propTypes = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/organisms/OpenSale/index.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/admin/components/organisms/OpenSale/index.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ConfigSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ConfigSection */ "./resources/js/admin/components/organisms/ConfigSection/index.js");
+/* harmony import */ var _SelectHall__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SelectHall */ "./resources/js/admin/components/organisms/SelectHall/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _atoms_Button_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../atoms/Button/Button */ "./resources/js/admin/components/atoms/Button/Button.js");
+/* harmony import */ var _lib_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../lib/api */ "./resources/js/lib/api.js");
+/* harmony import */ var _store_adminReducer_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../store/adminReducer/action */ "./resources/js/store/adminReducer/action.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+function OpenSale(props) {
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (store) {
+    return store.adminReduser;
+  }),
+      data = _useSelector.data;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      hallData = _useState2[0],
+      setHallData = _useState2[1];
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setHallData(_objectSpread({}, data[0]));
+  }, []);
+
+  var setOnSale = function setOnSale(id) {
+    setHallData(_objectSpread({}, data.find(function (item) {
+      return item.id === id;
+    })));
+  };
+
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var reqData, _data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              _context.prev = 1;
+              reqData = {
+                on_sale: !hallData.on_sale
+              };
+              _context.next = 5;
+              return (0,_lib_api__WEBPACK_IMPORTED_MODULE_6__.putRequest)("/hall/".concat(hallData.id), {
+                reqData: reqData
+              });
+
+            case 5:
+              _data = _context.sent;
+              dispatch((0,_store_adminReducer_action__WEBPACK_IMPORTED_MODULE_7__.fetchDataSuccess)(_toConsumableArray(_data.data)));
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0.message);
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 9]]);
+    }));
+
+    return function handleSubmit(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_ConfigSection__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: 'открыть продажи',
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SelectHall__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      handleRequestData: setOnSale,
+      resetData: setHallData,
+      name: "on_sale"
+    }), hallData && !hallData.on_sale && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_atoms_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      handleClick: handleSubmit,
+      title: "\u043E\u0442\u043A\u0440\u044B\u0442\u044C \u043F\u0440\u043E\u0434\u0430\u0436\u0443 \u0431\u0438\u043B\u0435\u0442\u043E\u0432"
+    }), hallData && hallData.on_sale && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_atoms_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      handleClick: handleSubmit,
+      title: "\u0437\u0430\u043A\u0440\u044B\u0442\u044C \u043F\u0440\u043E\u0434\u0430\u0436\u0443 \u0431\u0438\u043B\u0435\u0442\u043E\u0432",
+      style: "regular"
+    })]
+  });
+}
+
+OpenSale.propTypes = {};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OpenSale);
 
 /***/ }),
 

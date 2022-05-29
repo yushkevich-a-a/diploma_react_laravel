@@ -75,4 +75,4 @@ function CreateSessionPopup(props) {
 
 CreateSessionPopup.propTypes = {}
 
-export default CreateSessionPopup
+export default CreateSessionPopup;

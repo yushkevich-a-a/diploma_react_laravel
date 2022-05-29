@@ -11,7 +11,6 @@ function EditPrice(props) {
   const getPriceData = async (id) => {
     try {
       const data = await getRequest(`/hall/${id}`);
-      console.log(data);
       setHallData( prevState => ({ ...prevState, id: data.data.id, usual_price: data.data.usual_price, VIP_price: data.data.VIP_price }));
     } catch (e) {
       console.log(e.message)
@@ -27,8 +26,11 @@ function EditPrice(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await putRequest(`/hall/${hallData.id}`, {...hallData});
-      console.log(data)
+      const reqData = {
+        usual_price: hallData.usual_price,
+        VIP_price: hallData.VIP_price,
+      }
+      const data = await putRequest(`/hall/${hallData.id}`, { reqData });
       setHallData({...data});                                 
     } catch (e) {
       console.log(e.message);

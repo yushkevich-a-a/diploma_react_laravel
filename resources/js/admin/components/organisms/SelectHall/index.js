@@ -26,14 +26,14 @@ function SelectHall(props) {
       <ul className="conf-step__selectors-box">
         {
           data.map( item => <li key={item.id}>
-            <input type="radio" 
-            className="conf-step__radio" 
-            name={name} 
-            value={item.name} 
-            onChange={() => handleChecked(item.id)} 
-            checked={selectedHall === item.id}/>
-            <span className="conf-step__selector">{item.name}</span>
-          </li>)
+              <input type="radio" 
+              className="conf-step__radio" 
+              name={name} 
+              value={item.name} 
+              onChange={() => handleChecked(item.id)} 
+              checked={selectedHall === item.id}/>
+              <span className="conf-step__selector">{item.name}</span>
+            </li>)
         }
       </ul>
     </>
