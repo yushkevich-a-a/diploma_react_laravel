@@ -15,8 +15,14 @@ function Login(props) {
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const  data = await postRequest('/tokens/create', formData);
+      debugger;
+    } catch (e) {
+
+    }
   }
 
   return (
@@ -29,13 +35,17 @@ function Login(props) {
         </header>
         <div className="login__wrapper">
           <form className="login__form" acceptCharset="utf-8">
-            <label className="login__label" for="mail">
+            <label className="login__label" htmlFor="mail">
               E-mail
-              <input className="login__input" type="mail" placeholder="example@domain.xyz" name="mail" required/>
+              <input className="login__input" type="mail" 
+              value={formData.mail} onChange={handleChange} 
+              placeholder="example@domain.xyz" name="mail" required/>
             </label>
-            <label className="login__label" for="pwd">
+            <label className="login__label" htmlFor="pwd">
               Пароль
-              <input className="login__input" type="password" placeholder="" name="pwd" required/>
+              <input className="login__input" type="password" 
+              value={formData.pwd} onChange={handleChange} 
+              placeholder="" name="pwd" required/>
             </label>
             <div className="text-center">
               <input value="Авторизоваться" type="submit" className="login__button"/>
