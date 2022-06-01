@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
+use App\Models\Hall;
 use App\Models\Session;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,7 @@ class SessionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return Session::paginate();
+    { 
     }
 
 
@@ -68,7 +68,7 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      *
-//     * @param  \Index\Models\Session  $session
+     * @param  \Index\Models\Session  $session
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)

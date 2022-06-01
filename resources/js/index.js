@@ -1,7 +1,7 @@
 require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
+import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 import '../css/app.css';
@@ -10,7 +10,7 @@ if (document.getElementById('root')) {
     ReactDOM.render(
         <React.StrictMode>
             <Provider store={store}>
-                {/* <App /> */}
+                <App />
             </Provider>
         </React.StrictMode>,
         document.getElementById('root')

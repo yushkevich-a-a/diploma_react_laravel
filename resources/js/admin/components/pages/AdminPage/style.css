@@ -19,12 +19,12 @@ html {
   font-size: 62.5%; }
 
 body {
-  background-image: url("../../../assets/background-admin.jpg");
+  /* background-image: url("../../../assets/background-admin.jpg");
   background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
+  background-blend-mode: multiply; */
   background-size: cover;
   background-attachment: fixed;
-  counter-reset: num; }
+}
 
 input[type='radio'], input[type='submit'], button, .conf-step__header, select {
   cursor: pointer; }
@@ -32,12 +32,36 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
 .text-center {
   text-align: center; }
 
-.conf-steps, .page-header {
-  width: 972px;
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 42px;
+  }
+
+.header-wrapper .page-header {
+  margin: 0;
+  padding: 0;
+}
+
+.conf-steps, .page-header, .header-wrapper {
+  max-width: 972px;
   margin: 0 auto; }
 
 .conf-step__wrapper, .conf-step__header, .page-header {
   padding: 35px 42px 35px 104px; }
+
+  .logout-btn {
+    padding: 5px;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 2.3rem;
+    cursor: pointer;
+  }
+  .logout-btn:hover {
+    color: #ff0000;
+  }
 
 .page-header {
   color: #FFFFFF;

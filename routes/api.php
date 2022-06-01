@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,16 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/tokens/create', function (Request $request) {
-    $token = $request->user()->createToken($request->token_name);
 
-    return ['token' => $token->plainTextToken];
-});
+
+
+    Route::apiResource('/client', \App\Http\Controllers\ClientController::class);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('hall', \App\Http\Controllers\HallController::class);
     Route::apiResource('seats', \App\Http\Controllers\SeatController::class);
     Route::apiResource('film', \App\Http\Controllers\FilmController::class);
-    Route::apiResource('session', \App\Http\Controllers\SessionController::class);    
+    // Route::apiResource('session', \App\Http\Controllers\SessionController::class);
+    Route::get('session/{id}', [\App\Http\Controllers\SessionController::class, 'show']);
+    Route::post('session', [\App\Http\Controllers\SessionController::class, 'store']);
+    Route::delete('session/{id}', [\App\Http\Controllers\SessionController::class, 'destroy']);
+    Route::get('logout', [\App\Http\Controllers\ApiTokenController::class, 'removeToken']);
 });
+
+Route::post('token', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
 

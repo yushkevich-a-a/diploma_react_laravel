@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../organisms/Header';
+import { postRequest } from '../../../../lib/api';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/action';
+import GlobalLoader from '../../organisms/Loaders/GlobalLoader';
+import Error from '../../organisms/Errors/Error';
+import Button from '../../atoms/Button/Button';
+import AdminBackgroundWrapper from '../../templates/AdminBackgroundWrapper';
 
 function Login(props) {
   const [ formData, setFormData ] = useState({
-    mail: '',
-    pwd: '',
-  })
+    email: '',
+    password: '',
+  });
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector( store => store.adminReduser );
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -16,45 +27,55 @@ function Login(props) {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const  data = await postRequest('/tokens/create', formData);
-      debugger;
-    } catch (e) {
 
+    e.preventDefault();
+    dispatch(fetchData());
+    try {
+      const data = await postRequest('/token', formData);
+      localStorage.setItem('token', data.data);
+      dispatch(fetchDataComplete());
+      navigate('/admin', { replace: true });
+    } catch (e) {
+      dispatch(fetchDataError(e.message));
     }
   }
 
   return (
-    <>
-    <Header />
-    <main>
-      <section className="login">
-        <header className="login__header">
-          <h2 className="login__title">Авторизация</h2>
-        </header>
-        <div className="login__wrapper">
-          <form className="login__form" acceptCharset="utf-8">
-            <label className="login__label" htmlFor="mail">
-              E-mail
-              <input className="login__input" type="mail" 
-              value={formData.mail} onChange={handleChange} 
-              placeholder="example@domain.xyz" name="mail" required/>
-            </label>
-            <label className="login__label" htmlFor="pwd">
-              Пароль
-              <input className="login__input" type="password" 
-              value={formData.pwd} onChange={handleChange} 
-              placeholder="" name="pwd" required/>
-            </label>
-            <div className="text-center">
-              <input value="Авторизоваться" type="submit" className="login__button"/>
-            </div>
-          </form>
-        </div>
-      </section>
-  </main>
-  </>
+    <AdminBackgroundWrapper>
+      <Header />
+      {
+        loading && <GlobalLoader />
+      }
+      {
+        error && <Error error={error} />
+      }
+      <main>
+        <section className="login">
+          <header className="login__header">
+            <h2 className="login__title">Авторизация</h2>
+          </header>
+          <div className="login__wrapper">
+            <form onSubmit={handleSubmit} className="login__form" acceptCharset="utf-8">
+              <label className="login__label" htmlFor="email">
+                E-mail
+                <input className="login__input" type="mail" 
+                value={formData.email} onChange={handleChange} 
+                placeholder="example@domain.xyz" name="email" required/>
+              </label>
+              <label className="login__label" htmlFor="pwd">
+                Пароль
+                <input className="login__input" type="password" 
+                value={formData.password} onChange={handleChange} 
+                placeholder="" name="password" required/>
+              </label>
+              <div className="text-center">
+                <Button type="submit" handleClick={handleSubmit} title='Авторизоваться'/>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </AdminBackgroundWrapper>
   )
 }
 
