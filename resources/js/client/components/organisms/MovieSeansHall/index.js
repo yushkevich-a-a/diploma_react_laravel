@@ -7,9 +7,9 @@ function MovieSeansHall(props) {
   const { item } = props;
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const handleClick = (e, id) => {
     e.preventDefault();
-    navigate(`/client/hall/seans/${item.id}`, { replace: true});
+    navigate(`/client/hall/seans/${id}`, { replace: true});
   }
 
   return (
@@ -18,7 +18,7 @@ function MovieSeansHall(props) {
       <ul className="movie-seances__list">
         {
           item.sessions.map( session => <li key={session.id} className="movie-seances__time-block">
-              <a className="movie-seances__time" onClick={handleClick}>
+              <a className="movie-seances__time" onClick={(e) => handleClick(e, session.id)}>
                 {getHoursAndMinutes(session.start_session)}
               </a>
             </li>)

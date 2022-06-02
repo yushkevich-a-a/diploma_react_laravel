@@ -29,8 +29,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('session/{id}', [\App\Http\Controllers\SessionController::class, 'show']);
     Route::post('session', [\App\Http\Controllers\SessionController::class, 'store']);
     Route::delete('session/{id}', [\App\Http\Controllers\SessionController::class, 'destroy']);
-    Route::get('logout', [\App\Http\Controllers\ApiTokenController::class, 'removeToken']);
 });
 
 Route::post('token', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
 
+Route::get('logout', [\App\Http\Controllers\ApiTokenController::class, 'removeToken']);

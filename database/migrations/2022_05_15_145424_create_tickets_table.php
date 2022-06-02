@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->integer('session_id');
+            $table->foreign('session_id')->references('id')->on('session')->onDelete('cascade');
             $table->integer('seat_id');
             $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
             $table->string('date_session');

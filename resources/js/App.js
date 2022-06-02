@@ -10,9 +10,10 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/client/hall/seans/:seans_id' element={<ClientHall/>}/>
+                <Route path='/client' element={<ClientPage/>}/>
                 <Route path='/admin' element={<AdminPage/>}/>
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/client' element={<ClientPage/>}/>
+                
             </Routes>
         </BrowserRouter>
     );

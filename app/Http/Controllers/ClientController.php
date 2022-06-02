@@ -54,12 +54,20 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+    //  * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id, string $dateString)
     {
-        //
+        $session = Session::firstWhere('id', $id);
+        $session->film;
+        $session->hall->seats;
+        foreach ($session->hall->seats as &$seat) {
+            
+            # code...
+        }
+
+        return response()->json($session, 201);
     }
 
     /**
