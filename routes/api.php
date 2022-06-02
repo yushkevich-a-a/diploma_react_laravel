@@ -18,17 +18,16 @@ use Illuminate\Validation\ValidationException;
 
 
 
+Route::get('logout', [\App\Http\Controllers\ApiTokenController::class, 'removeToken']);
+Route::apiResource('client', \App\Http\Controllers\ClientController::class);
 
-    Route::apiResource('/client', \App\Http\Controllers\ClientController::class);
-
-// Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('hall', \App\Http\Controllers\HallController::class);
     Route::apiResource('seats', \App\Http\Controllers\SeatController::class);
     Route::apiResource('film', \App\Http\Controllers\FilmController::class);
     Route::apiResource('session', \App\Http\Controllers\SessionController::class);
 
-// });
+});
 
 Route::post('token', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
 
-Route::get('logout', [\App\Http\Controllers\ApiTokenController::class, 'removeToken']);

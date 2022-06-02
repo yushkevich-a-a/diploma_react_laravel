@@ -103,12 +103,14 @@ class HallController extends Controller
      */
     public function destroy(int $id)
     {
-        if (!Hall::destroy($id)) {
-            return response('not found', 404);
-        }
+
+        // if (!Hall::destroy($id)) {
+        //     return response('not found', 404);
+        // }
+        $hall = Hall::where('id', $id)->delete();
         return response()->json([
             "status" => "success",
-            "data"=>Hall::all(),
+            "val"=>$hall,
         ], 201);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Seat;
 
 class Hall extends Model
 {
@@ -16,9 +18,8 @@ class Hall extends Model
         'on_sale',
         'rows',
         'places'
-    ];
-
-    protected $casts = [
+        'rows',
+ted $casts = [
         'on_sale' => 'boolean',
     ];
 
