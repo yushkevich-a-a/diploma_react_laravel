@@ -21,7 +21,7 @@ class SeatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-//     * @return boolean
+    * @return boolean
      */
     public function store(Request  $request)
     {   
@@ -30,14 +30,6 @@ class SeatController extends Controller
             $hall->rows = $request->rows;
             $hall->places = $request->places;
             $hall->save();
-            var_dump($request->id);
-            $data = Seat::where('hall_id', 1);
-
-            return response()->json([
-                "status" => "success",
-                "data" =>  $data,
-            ], 201);
-
             foreach ($request->seats as $seat){
                 Seat::create([
                     'hall_id' => $request->id,

@@ -38,13 +38,13 @@ class SessionController extends Controller
              if ($start_session >= $session->start_session && $start_session <= $session->finish_session ) {
                  return response()->json([
                      "status"=>"error",
-                     "data"=>'start get to diapason',
+                     "data"=>'время пересекается с началом сессии',
                      ], 201);
              }
              if ($finish_session >= $session->start_session && $finish_session <= $session->finish_session ) {
                  return response()->json([
                      "status"=>"error",
-                     "data"=>'end get to diapason',
+                     "data"=>'время пересекается с концом сессии',
                      ], 201);
              }
          }

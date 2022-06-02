@@ -14,6 +14,8 @@ class Hall extends Model
         'VIP_price',
         'usual_price',
         'on_sale',
+        'rows',
+        'places'
     ];
 
     protected $casts = [
