@@ -1,29 +1,32 @@
 const initState = {
   loading: false,
   error: null,
-  data: [],
-  films: [],
+  selectSeats: [],
 }
 
 const serviceClientReduser = ( state = initState, action ) => {
   switch (action.type) {
-    case 'LOADING_DATA':
+    case 'LOADING_DATA_CLIENT':
       return { ...state, loading: true, error: null };
-    case 'LOADING_COMPLETE':
+    case 'LOADING_CLIENT_COMPLETE':
       return { ...state, loading: false,};
-    case 'SELECT_DATE':
-      const { date } = action.payload;
-      return { ...state, loading: false, error: null, data };
+    case 'SELECT_SEAT':
+      const { add_seat } = action.payload;
+      return { ...state, loading: false, error: null, selectSeats: [...state.selectSeats, add_seat ] };
+    case 'REMOVE_SEAT':
+      const { remove_id } = action.payload;
+      const selectSeats = state.selectSeats.filter(item => item.id !==  remove_id)
+      return { ...state, loading: false, error: message };
     case 'FETCH_ERROR_CLIENT':
       const { message } = action.payload;
       return { ...state, loading: false, error: message };
     case 'FETCH_ERROR_CLIENT_COMPLETE':
       return { ...state, error: null };
-    case 'RESET_STATE':
+    case 'RESET_STATE_CLIENT':
       return { ...initState };
     default: 
       return { ...state };
   }
 }
 
-export default serviceAdminReduser;
+export default serviceClientReduser;

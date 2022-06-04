@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import baсkground from '../../../assets/background.jpg';
 import './style.css';
+import Header from '../../organisms/Header';
 
 function ClientBackgroundWrapper(props) {
 
@@ -10,9 +11,10 @@ function ClientBackgroundWrapper(props) {
 
   return (
     <>
-    {
-      props.children
-    }
+      <Header />
+      {
+        props.children
+      }
     </>
   )
 }

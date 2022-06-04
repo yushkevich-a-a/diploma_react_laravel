@@ -10,7 +10,8 @@ const { row, col, handleClick, data } = props;
         display: 'grid',
         gridTemplateRows: `repeat(${row || '1'}, 26px)`,
         gridTemplateColumns: `repeat(${col || '1'}, 26px)`,
-        gap: '10px'
+        gap: '10px',
+        justifyContent: 'center',
         }}>
         {
           data.map( item => <span key={item.id} onClick={() => handleClick(item.id)} className={`conf-step__chair conf-step__chair_${item.status}`}></span>)

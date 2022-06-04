@@ -18,8 +18,9 @@ class Hall extends Model
         'on_sale',
         'rows',
         'places'
-        'rows',
-ted $casts = [
+    ];
+
+    protected $casts = [
         'on_sale' => 'boolean',
     ];
 

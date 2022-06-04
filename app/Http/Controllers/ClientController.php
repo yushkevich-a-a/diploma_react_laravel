@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Session;
+use App\Models\Ticket;
 
 class ClientController extends Controller
 {
@@ -57,14 +58,21 @@ class ClientController extends Controller
     //  * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id, string $dateString)
+    public function dateSeans($id, $date)
     {
         $session = Session::firstWhere('id', $id);
         $session->film;
         $session->hall->seats;
         foreach ($session->hall->seats as &$seat) {
-            
-            # code...
+            $ticket = Ticket::where('session_id',$session->id)
+                ->where('date_session', $date)
+                ->where('number_seat', $seat->number_seat)
+                ->firstOr(function () {
+                    return false;
+                });
+            if ($ticket) {
+                $seat->status = 'taken';
+            }
         }
 
         return response()->json($session, 201);

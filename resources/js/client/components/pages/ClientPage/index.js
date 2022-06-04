@@ -22,7 +22,6 @@ function ClientPage(props) {
 
   return (
     <ClientBackgroundWrapper>
-      <Header />
       <Calendar />
       {
         data && <Main>

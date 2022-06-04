@@ -6640,7 +6640,8 @@ function Hall(props) {
         display: 'grid',
         gridTemplateRows: "repeat(".concat(row || '1', ", 26px)"),
         gridTemplateColumns: "repeat(".concat(col || '1', ", 26px)"),
-        gap: '10px'
+        gap: '10px',
+        justifyContent: 'center'
       },
       children: data.map(function (item) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
@@ -8504,6 +8505,106 @@ Film.propTypes = {};
 
 /***/ }),
 
+/***/ "./resources/js/client/components/organisms/HallClient/index.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/client/components/organisms/HallClient/index.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function HallClient(props) {
+  var rows = props.rows,
+      places = props.places,
+      seats = props.seats,
+      selectedSeats = props.selectedSeats,
+      handleSelect = props.handleSelect;
+
+  var handleClick = function handleClick(seat) {
+    if (seat.status === 'disable' || seat.status === 'taken') {
+      return;
+    }
+
+    handleSelect(seat);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "buying-scheme",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "buying-scheme-screen"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "buying-scheme__wrapper",
+      style: {
+        display: 'grid',
+        gridTemplateRows: "repeat(".concat(rows || '1', ", 2rem)"),
+        gridTemplateColumns: "repeat(".concat(places || '1', ", 2rem)"),
+        gap: '4px',
+        justifyContent: 'center'
+      },
+      children: seats.map(function (seat) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          onClick: function onClick() {
+            return handleClick(seat);
+          },
+          className: "buying-scheme__chair buying-scheme__chair_".concat(selectedSeats.find(function (item) {
+            return item.id === seat.id;
+          }) ? 'selected' : seat.status)
+        }, seat.id);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "buying-scheme__legend",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "col",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_standart"
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__legend-value",
+            children: "250"
+          }), "\u0440\u0443\u0431)"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_vip"
+          }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E VIP (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__legend-value",
+            children: "350"
+          }), "\u0440\u0443\u0431)"]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "col",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_taken"
+          }), " \u0417\u0430\u043D\u044F\u0442\u043E"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+          className: "buying-scheme__legend-price",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "buying-scheme__chair buying-scheme__chair_selected"
+          }), " \u0412\u044B\u0431\u0440\u0430\u043D\u043E"]
+        })]
+      })]
+    })]
+  });
+}
+
+HallClient.propTypes = {};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HallClient);
+
+/***/ }),
+
 /***/ "./resources/js/client/components/organisms/Header/index.js":
 /*!******************************************************************!*\
   !*** ./resources/js/client/components/organisms/Header/index.js ***!
@@ -8640,13 +8741,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
 /* harmony import */ var _templates_ClientBackgroundWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../templates/ClientBackgroundWrapper */ "./resources/js/client/components/templates/ClientBackgroundWrapper/index.js");
 /* harmony import */ var _organisms_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../organisms/Header */ "./resources/js/client/components/organisms/Header/index.js");
 /* harmony import */ var _organisms_Main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../organisms/Main */ "./resources/js/client/components/organisms/Main/index.js");
 /* harmony import */ var _lib_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../lib/api */ "./resources/js/lib/api.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _lib_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../lib/functions */ "./resources/js/lib/functions.js");
+/* harmony import */ var _organisms_HallClient__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/HallClient */ "./resources/js/client/components/organisms/HallClient/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 
@@ -8676,14 +8787,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function ClientHall(props) {
-  var _useParams = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useParams)(),
+  var _useParams = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
       seans_id = _useParams.seans_id;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selectSeat = _useState4[0],
+      setSelectSeat = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var _data;
@@ -8694,7 +8812,7 @@ function ClientHall(props) {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0,_lib_api__WEBPACK_IMPORTED_MODULE_4__.getRequest)("/client/".concat(seans_id));
+            return (0,_lib_api__WEBPACK_IMPORTED_MODULE_4__.getRequest)("/client/seans/".concat(seans_id, "/date/", 'sklls'));
 
           case 3:
             _data = _context.sent;
@@ -8713,337 +8831,45 @@ function ClientHall(props) {
       }
     }, _callee, null, [[0, 7]]);
   })), []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_templates_ClientBackgroundWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_Main__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("section", {
+
+  var handleSelectSeat = function handleSelectSeat(seat) {
+    if (selectSeat.find(function (item) {
+      return item.id === seat.id;
+    })) {
+      return setSelectSeat(_toConsumableArray(selectSeat.filter(function (item) {
+        return item.id !== seat.id;
+      })));
+    }
+
+    setSelectSeat([].concat(_toConsumableArray(selectSeat), [seat]));
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_templates_ClientBackgroundWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Main__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      children: data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("section", {
         className: "buying",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "buying__info",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "buying__info-description",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
               className: "buying__info-title",
-              children: "\u0417\u0432\u0451\u0437\u0434\u043D\u044B\u0435 \u0432\u043E\u0439\u043D\u044B XXIII: \u0410\u0442\u0430\u043A\u0430 \u043A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0445 \u043A\u043B\u043E\u043D\u043E\u0432"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+              children: data.film.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
               className: "buying__info-start",
-              children: "\u041D\u0430\u0447\u0430\u043B\u043E \u0441\u0435\u0430\u043D\u0441\u0430: 18:30"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+              children: ["\u041D\u0430\u0447\u0430\u043B\u043E \u0441\u0435\u0430\u043D\u0441\u0430: ", (0,_lib_functions__WEBPACK_IMPORTED_MODULE_5__.getHoursAndMinutes)(data.start_session)]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
               className: "buying__info-hall",
-              children: "\u0417\u0430\u043B 1"
+              children: data.hall.name
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "buying-scheme",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "buying-scheme__wrapper",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_vip"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_selected"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_selected"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_disabled"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "buying-scheme__row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_taken"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "buying-scheme__chair buying-scheme__chair_standart"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "buying-scheme__legend",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                className: "buying-scheme__legend-price",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__chair buying-scheme__chair_standart"
-                }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__legend-value",
-                  children: "250"
-                }), "\u0440\u0443\u0431)"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                className: "buying-scheme__legend-price",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__chair buying-scheme__chair_vip"
-                }), " \u0421\u0432\u043E\u0431\u043E\u0434\u043D\u043E VIP (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__legend-value",
-                  children: "350"
-                }), "\u0440\u0443\u0431)"]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                className: "buying-scheme__legend-price",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__chair buying-scheme__chair_taken"
-                }), " \u0417\u0430\u043D\u044F\u0442\u043E"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                className: "buying-scheme__legend-price",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "buying-scheme__chair buying-scheme__chair_selected"
-                }), " \u0412\u044B\u0431\u0440\u0430\u043D\u043E"]
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_HallClient__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          handleSelect: handleSelectSeat,
+          rows: data.hall.rows,
+          places: data.hall.places,
+          seats: data.hall.seats,
+          selectedSeats: selectSeat
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
           className: "acceptin-button",
           onClick: function onClick() {
             return console.log('Забронировать');
@@ -9051,7 +8877,7 @@ function ClientHall(props) {
           children: "\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C"
         })]
       })
-    })]
+    })
   });
 }
 
@@ -9146,7 +8972,7 @@ function ClientPage(props) {
     }, _callee, null, [[0, 8]]);
   })), []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_templates_ClientBackgroundWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
       children: data.map(function (film) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_Film__WEBPACK_IMPORTED_MODULE_6__["default"], {
           item: film
@@ -9175,7 +9001,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _assets_background_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/background.jpg */ "./resources/js/client/assets/background.jpg");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./resources/js/client/components/templates/ClientBackgroundWrapper/style.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _organisms_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../organisms/Header */ "./resources/js/client/components/organisms/Header/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -9186,8 +9015,8 @@ __webpack_require__.r(__webpack_exports__);
 function ClientBackgroundWrapper(props) {
   document.body.style.backgroundImage = "url(".concat(_assets_background_jpg__WEBPACK_IMPORTED_MODULE_1__["default"], ")");
   document.body.style.backgroundPosition = 'right';
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: props.children
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_organisms_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {}), props.children]
   });
 }
 
@@ -9830,6 +9659,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var reducers = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
+  serviceCommonRedus: serviceCommonRedus,
   adminReduser: _adminReducer_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_1__.compose;
@@ -15077,7 +14907,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_assets_border_top_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
 var ___CSS_LOADER_URL_REPLACEMENT_3___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_assets_border_bottom_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nhtml {\r\n  font-family: \"Roboto\", sans-serif;\r\n  font-size: 62.5%;\r\n}\r\n\r\nbody {\r\n  background-size: cover;\r\n  background-attachment: fixed;\r\n}\r\n\r\n.page-header {\r\n  padding: 1.4rem;\r\n}\r\n\r\n.page-header__title {\r\n  margin: 0;\r\n  font-weight: 900;\r\n  font-size: 3.4rem;\r\n  color: #FFFFFF;\r\n  text-transform: uppercase;\r\n}\r\n.page-header__title span {\r\n  font-weight: 100;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Главная ~~~~~~~~~~~~ */\r\n.page-nav {\r\n  position: -webkit-sticky;\r\n  position: sticky;\r\n  top: 2px;\r\n  padding-bottom: 1rem;\r\n  display: flex;\r\n  flex-wrap: nowrap;\r\n  align-items: stretch;\r\n  color: #000000;\r\n  z-index: 10;\r\n}\r\n.page-nav .page-nav__day {\r\n  flex-basis: calc(100% / 8);\r\n  font-size: 1.2rem;\r\n  padding: 1rem;\r\n  background: rgba(255, 255, 255, 0.9);\r\n  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);\r\n  border-radius: 2px;\r\n  text-decoration: none;\r\n  color: #000000;\r\n}\r\n.page-nav .page-nav__day + .page-nav__day {\r\n  margin-left: 1px;\r\n}\r\n.page-nav .page-nav__day .page-nav__day-week::after {\r\n  content: ',';\r\n}\r\n.page-nav .page-nav__day .page-nav__day-number::before {\r\n  content: ' ';\r\n}\r\n.page-nav .page-nav__day .page-nav__day-week, .page-nav .page-nav__day .page-nav__day-number {\r\n  display: block;\r\n}\r\n.page-nav .page-nav__day_chosen {\r\n  flex-grow: 1;\r\n  background-color: #FFFFFF;\r\n  font-weight: 700;\r\n  transform: scale(1.1);\r\n}\r\n.page-nav .page-nav__day_weekend {\r\n  color: #DE2121;\r\n}\r\n.page-nav .page-nav__day_next {\r\n  text-align: center;\r\n}\r\n.page-nav .page-nav__day_next::before {\r\n  content: '>';\r\n  font-family: monospace;\r\n  font-weight: 700;\r\n  font-size: 2.4rem;\r\n}\r\n.page-nav .page-nav__day_today .page-nav__day-week::before {\r\n  content: 'Сегодня';\r\n  display: block;\r\n}\r\n.page-nav .page-nav__day_today .page-nav__day-week, .page-nav .page-nav__day_today .page-nav__day-number {\r\n  display: inline;\r\n}\r\n\r\n.movie {\r\n  position: relative;\r\n  padding: 1.5rem;\r\n  margin-top: 3rem;\r\n  background: rgba(241, 235, 230, 0.95);\r\n  color: #000000;\r\n}\r\n.movie .movie__info {\r\n  display: flex;\r\n}\r\n.movie .movie__poster {\r\n  position: relative;\r\n  width: 12.5rem;\r\n  height: 17.5rem;\r\n  /*    left: 1.5rem;\r\n      top: -1.5rem;*/\r\n}\r\n.movie .movie__poster .movie__poster-image {\r\n  position: relative;\r\n  top: -3rem;\r\n  width: 12.5rem;\r\n  height: 17.5rem;\r\n}\r\n.movie .movie__poster::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  right: -0.7rem;\r\n  top: -3rem;\r\n  border: 1.5rem solid transparent;\r\n  border-bottom: 0 solid transparent;\r\n  border-right: 0 solid transparent;\r\n  border-left: 0.7rem solid #772720;\r\n}\r\n.movie .movie__description {\r\n  flex-grow: 1;\r\n  padding-left: 1.5rem;\r\n}\r\n.movie .movie__title {\r\n  font-weight: 700;\r\n  font-size: 1.6rem;\r\n}\r\n.movie .movie__synopsis {\r\n  font-size: 1.4rem;\r\n  margin-top: 1rem;\r\n}\r\n.movie .movie__data {\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  margin-top: 1rem;\r\n}\r\n.movie .movie-seances__hall + .movie-seances__hall {\r\n  margin-top: 2rem;\r\n}\r\n.movie .movie-seances__hall .movie-seances__hall-title {\r\n  font-weight: 700;\r\n  font-size: 1.6rem;\r\n}\r\n.movie .movie-seances__hall .movie-seances__list {\r\n  margin-top: 0.7rem;\r\n  font-size: 0;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time-block {\r\n  display: inline-block;\r\n  margin-bottom: 4px;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time-block:nth-last-of-type(n + 1) {\r\n  margin-right: 4px;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time {\r\n  display: block;\r\n  padding: 8px;\r\n  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);\r\n  border-radius: 2px;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  text-decoration: none;\r\n  font-size: 1.5rem;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Кинозал ~~~~~~~~~~~~ */\r\n.acceptin-button {\r\n  display: block;\r\n  margin: 3rem auto 0;\r\n  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.24), 0px 0px 3px rgba(0, 0, 0, 0.12);\r\n  border-radius: 3px;\r\n  border: none;\r\n  padding: 12px 57px;\r\n  text-transform: uppercase;\r\n  font-weight: 500;\r\n  font-size: 1.4rem;\r\n  background-color: #16A6AF;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.buying {\r\n  background-color: rgba(241, 235, 230, 0.95);\r\n  padding-bottom: 3rem;\r\n}\r\n\r\n.buying__info {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  padding: 1.5rem;\r\n}\r\n.buying__info .buying__info-description {\r\n  padding-right: 1.5rem;\r\n}\r\n.buying__info .buying__info-title, .buying__info .buying__info-hall {\r\n  font-size: 1.6rem;\r\n  font-weight: 700;\r\n}\r\n.buying__info .buying__info-start {\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  margin: 0.7rem 0;\r\n}\r\n.buying__info .buying__info-hint {\r\n  position: relative;\r\n  font-weight: 300;\r\n  font-size: 1.4rem;\r\n  text-align: center;\r\n}\r\n.buying__info .buying__info-hint p {\r\n  position: relative;\r\n  width: 10rem;\r\n}\r\n.buying__info .buying__info-hint p::before {\r\n  content: '';\r\n  position: absolute;\r\n  left: -1rem;\r\n  top: calc(50% - 1.6rem);\r\n  display: block;\r\n  width: 2.4rem;\r\n  height: 3.2rem;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: 2.4rem 3.2rem;\r\n}\r\n\r\n.buying-scheme {\r\n  text-align: center;\r\n  background-color: #171D24;\r\n  padding: 1.5rem 3rem 1.5rem;\r\n}\r\n\r\n.buying-scheme__wrapper {\r\n  font-size: 0;\r\n  display: inline-block;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\r\n  background-position: top;\r\n  background-repeat: no-repeat;\r\n  background-size: 100%;\r\n  padding-top: 3rem;\r\n}\r\n.buying-scheme__wrapper::before {\r\n  content: '';\r\n}\r\n\r\n.buying-scheme__row + .buying-scheme__row {\r\n  margin-top: 4px;\r\n}\r\n\r\n.buying-scheme__chair {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  border: 1px solid #525252;\r\n  box-sizing: border-box;\r\n  border-radius: 4px;\r\n}\r\n.buying-scheme__chair:not(:first-of-type) {\r\n  margin-left: 4px;\r\n}\r\n\r\n.buying-scheme__chair_disabled {\r\n  opacity: 0;\r\n}\r\n\r\n.buying-scheme__chair_standart {\r\n  background-color: #FFFFFF;\r\n}\r\n\r\n.buying-scheme__chair_taken {\r\n  background-color: transparent;\r\n}\r\n\r\n.buying-scheme__chair_vip {\r\n  background-color: #F9953A;\r\n}\r\n\r\n.buying-scheme__chair_selected {\r\n  background-color: #25C4CE;\r\n  box-shadow: 0px 0px 4px #16A6AF;\r\n  transform: scale(1.2);\r\n}\r\n\r\n.buying-scheme__legend {\r\n  padding-top: 3rem;\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  color: #FFFFFF;\r\n  display: flex;\r\n  flex-wrap: nowrap;\r\n  text-align: left;\r\n}\r\n.buying-scheme__legend .col {\r\n  max-width: 25rem;\r\n}\r\n.buying-scheme__legend .col:first-of-type {\r\n  padding-right: 1.5rem;\r\n  margin-left: auto;\r\n}\r\n.buying-scheme__legend .col:last-of-type {\r\n  margin-right: auto;\r\n}\r\n.buying-scheme__legend .buying-scheme__legend-price + .buying-scheme__legend-price {\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Билет ~~~~~~~~~~~~ */\r\n.tichet__check, .ticket__info-wrapper {\r\n  padding-left: 1.5rem;\r\n  padding-right: 1.5rem;\r\n  background-color: rgba(241, 235, 230, 0.95);\r\n}\r\n\r\n.tichet__check {\r\n  position: relative;\r\n  padding-top: 2.5rem;\r\n  padding-bottom: 2.5rem;\r\n}\r\n.tichet__check::before {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  top: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n.tichet__check::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  bottom: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n\r\n.ticket__info-wrapper {\r\n  position: relative;\r\n  margin-top: 6px;\r\n  padding-top: 2rem;\r\n  padding-bottom: 3rem;\r\n}\r\n.ticket__info-wrapper::before {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  top: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n.ticket__info-wrapper::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  bottom: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n\r\n.ticket__check-title {\r\n  font-weight: 700;\r\n  font-size: 2.2rem;\r\n  text-transform: uppercase;\r\n  color: #C76F00;\r\n}\r\n\r\n.ticket__info {\r\n  font-size: 1.6rem;\r\n  color: #000000;\r\n}\r\n.ticket__info + .ticket__info {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.ticket__details {\r\n  font-weight: 700;\r\n}\r\n\r\n.ticket__hint {\r\n  font-weight: 300;\r\n  font-size: 1.4rem;\r\n  margin-top: 3rem;\r\n}\r\n.ticket__hint + .ticket__hint {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.ticket__info-qr {\r\n  display: block;\r\n  margin: 3rem auto 0;\r\n  width: 20rem;\r\n  height: 20rem;\r\n}\r\n\r\n@media screen and (min-width: 479px) {\r\n  .page-nav .page-nav__day {\r\n    padding: 1rem 2rem;\r\n  }\r\n}\r\n@media screen and (min-width: 990px) {\r\n  .page-header, nav, main {\r\n    width: 990px;\r\n    margin: auto;\r\n  }\r\n\r\n  .movie, .buying {\r\n    border-radius: 2px;\r\n  }\r\n\r\n  .buying__info-hint {\r\n    display: none;\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nhtml {\r\n  font-family: \"Roboto\", sans-serif;\r\n  font-size: 62.5%;\r\n}\r\n\r\nbody {\r\n  background-size: cover;\r\n  background-attachment: fixed;\r\n}\r\n\r\n.page-header {\r\n  padding: 1.4rem;\r\n}\r\n\r\n.page-header__title {\r\n  margin: 0;\r\n  font-weight: 900;\r\n  font-size: 3.4rem;\r\n  color: #FFFFFF;\r\n  text-transform: uppercase;\r\n}\r\n.page-header__title span {\r\n  font-weight: 100;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Главная ~~~~~~~~~~~~ */\r\n.page-nav {\r\n  position: -webkit-sticky;\r\n  position: sticky;\r\n  top: 2px;\r\n  padding-bottom: 1rem;\r\n  display: flex;\r\n  flex-wrap: nowrap;\r\n  align-items: stretch;\r\n  color: #000000;\r\n  z-index: 10;\r\n}\r\n.page-nav .page-nav__day {\r\n  flex-basis: calc(100% / 8);\r\n  font-size: 1.2rem;\r\n  padding: 1rem;\r\n  background: rgba(255, 255, 255, 0.9);\r\n  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);\r\n  border-radius: 2px;\r\n  text-decoration: none;\r\n  color: #000000;\r\n}\r\n.page-nav .page-nav__day + .page-nav__day {\r\n  margin-left: 1px;\r\n}\r\n.page-nav .page-nav__day .page-nav__day-week::after {\r\n  content: ',';\r\n}\r\n.page-nav .page-nav__day .page-nav__day-number::before {\r\n  content: ' ';\r\n}\r\n.page-nav .page-nav__day .page-nav__day-week, .page-nav .page-nav__day .page-nav__day-number {\r\n  display: block;\r\n}\r\n.page-nav .page-nav__day_chosen {\r\n  flex-grow: 1;\r\n  background-color: #FFFFFF;\r\n  font-weight: 700;\r\n  transform: scale(1.1);\r\n}\r\n.page-nav .page-nav__day_weekend {\r\n  color: #DE2121;\r\n}\r\n.page-nav .page-nav__day_next {\r\n  text-align: center;\r\n}\r\n.page-nav .page-nav__day_next::before {\r\n  content: '>';\r\n  font-family: monospace;\r\n  font-weight: 700;\r\n  font-size: 2.4rem;\r\n}\r\n.page-nav .page-nav__day_today .page-nav__day-week::before {\r\n  content: 'Сегодня';\r\n  display: block;\r\n}\r\n.page-nav .page-nav__day_today .page-nav__day-week, .page-nav .page-nav__day_today .page-nav__day-number {\r\n  display: inline;\r\n}\r\n\r\n.movie {\r\n  position: relative;\r\n  padding: 1.5rem;\r\n  margin-top: 3rem;\r\n  background: rgba(241, 235, 230, 0.95);\r\n  color: #000000;\r\n}\r\n.movie .movie__info {\r\n  display: flex;\r\n}\r\n.movie .movie__poster {\r\n  position: relative;\r\n  width: 12.5rem;\r\n  height: 17.5rem;\r\n  /*    left: 1.5rem;\r\n      top: -1.5rem;*/\r\n}\r\n.movie .movie__poster .movie__poster-image {\r\n  position: relative;\r\n  top: -3rem;\r\n  width: 12.5rem;\r\n  height: 17.5rem;\r\n}\r\n.movie .movie__poster::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  right: -0.7rem;\r\n  top: -3rem;\r\n  border: 1.5rem solid transparent;\r\n  border-bottom: 0 solid transparent;\r\n  border-right: 0 solid transparent;\r\n  border-left: 0.7rem solid #772720;\r\n}\r\n.movie .movie__description {\r\n  flex-grow: 1;\r\n  padding-left: 1.5rem;\r\n}\r\n.movie .movie__title {\r\n  font-weight: 700;\r\n  font-size: 1.6rem;\r\n}\r\n.movie .movie__synopsis {\r\n  font-size: 1.4rem;\r\n  margin-top: 1rem;\r\n}\r\n.movie .movie__data {\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  margin-top: 1rem;\r\n}\r\n.movie .movie-seances__hall + .movie-seances__hall {\r\n  margin-top: 2rem;\r\n}\r\n.movie .movie-seances__hall .movie-seances__hall-title {\r\n  font-weight: 700;\r\n  font-size: 1.6rem;\r\n}\r\n.movie .movie-seances__hall .movie-seances__list {\r\n  margin-top: 0.7rem;\r\n  font-size: 0;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time-block {\r\n  display: inline-block;\r\n  margin-bottom: 4px;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time-block:nth-last-of-type(n + 1) {\r\n  margin-right: 4px;\r\n}\r\n.movie .movie-seances__hall .movie-seances__time {\r\n  display: block;\r\n  padding: 8px;\r\n  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);\r\n  border-radius: 2px;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  text-decoration: none;\r\n  font-size: 1.5rem;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Кинозал ~~~~~~~~~~~~ */\r\n.acceptin-button {\r\n  display: block;\r\n  margin: 3rem auto 0;\r\n  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.24), 0px 0px 3px rgba(0, 0, 0, 0.12);\r\n  border-radius: 3px;\r\n  border: none;\r\n  padding: 12px 57px;\r\n  text-transform: uppercase;\r\n  font-weight: 500;\r\n  font-size: 1.4rem;\r\n  background-color: #16A6AF;\r\n  color: #FFFFFF;\r\n}\r\n\r\n.buying {\r\n  background-color: rgba(241, 235, 230, 0.95);\r\n  padding-bottom: 3rem;\r\n}\r\n\r\n.buying__info {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  padding: 1.5rem;\r\n}\r\n.buying__info .buying__info-description {\r\n  padding-right: 1.5rem;\r\n}\r\n.buying__info .buying__info-title, .buying__info .buying__info-hall {\r\n  font-size: 1.6rem;\r\n  font-weight: 700;\r\n}\r\n.buying__info .buying__info-start {\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  margin: 0.7rem 0;\r\n}\r\n.buying__info .buying__info-hint {\r\n  position: relative;\r\n  font-weight: 300;\r\n  font-size: 1.4rem;\r\n  text-align: center;\r\n}\r\n.buying__info .buying__info-hint p {\r\n  position: relative;\r\n  width: 10rem;\r\n}\r\n.buying__info .buying__info-hint p::before {\r\n  content: '';\r\n  position: absolute;\r\n  left: -1rem;\r\n  top: calc(50% - 1.6rem);\r\n  display: block;\r\n  width: 2.4rem;\r\n  height: 3.2rem;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: 2.4rem 3.2rem;\r\n}\r\n\r\n.buying-scheme {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  text-align: center;\r\n  background-color: #171D24;\r\n  padding: 1.5rem 3rem 1.5rem;\r\n}\r\n\r\n.buying-scheme-screen {\r\n  display: flex;\r\n  min-width: 300px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\r\n  background-position: top;\r\n  background-repeat: no-repeat;\r\n  background-size: 100%;\r\n  min-height: 30px;\r\n}\r\n\r\n.buying-scheme__wrapper {\r\n  font-size: 0;\r\n  display: inline-block;\r\n}\r\n\r\n.buying-scheme__chair {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  border: 1px solid #525252;\r\n  box-sizing: border-box;\r\n  border-radius: 4px;\r\n}\r\n\r\n.buying-scheme__chair_disable {\r\n  opacity: 0;\r\n}\r\n\r\n.buying-scheme__chair_standart {\r\n  background-color: #FFFFFF;\r\n}\r\n\r\n.buying-scheme__chair_taken {\r\n  background-color: transparent;\r\n}\r\n\r\n.buying-scheme__chair_vip {\r\n  background-color: #F9953A;\r\n}\r\n\r\n.buying-scheme__chair_selected {\r\n  background-color: #25C4CE;\r\n  box-shadow: 0px 0px 4px #16A6AF;\r\n  transform: scale(1.2);\r\n}\r\n\r\n.buying-scheme__legend {\r\n  padding-top: 3rem;\r\n  font-size: 1.4rem;\r\n  font-weight: 300;\r\n  color: #FFFFFF;\r\n  display: flex;\r\n  flex-wrap: nowrap;\r\n  text-align: left;\r\n}\r\n.buying-scheme__legend .col {\r\n  max-width: 25rem;\r\n}\r\n.buying-scheme__legend .col:first-of-type {\r\n  padding-right: 1.5rem;\r\n  margin-left: auto;\r\n}\r\n.buying-scheme__legend .col:last-of-type {\r\n  margin-right: auto;\r\n}\r\n.buying-scheme__legend .buying-scheme__legend-price + .buying-scheme__legend-price {\r\n  margin-top: 1rem;\r\n}\r\n\r\n/* ~~~~~~~~~~~~ Билет ~~~~~~~~~~~~ */\r\n.tichet__check, .ticket__info-wrapper {\r\n  padding-left: 1.5rem;\r\n  padding-right: 1.5rem;\r\n  background-color: rgba(241, 235, 230, 0.95);\r\n}\r\n\r\n.tichet__check {\r\n  position: relative;\r\n  padding-top: 2.5rem;\r\n  padding-bottom: 2.5rem;\r\n}\r\n.tichet__check::before {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  top: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n.tichet__check::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  bottom: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n\r\n.ticket__info-wrapper {\r\n  position: relative;\r\n  margin-top: 6px;\r\n  padding-top: 2rem;\r\n  padding-bottom: 3rem;\r\n}\r\n.ticket__info-wrapper::before {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  top: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n.ticket__info-wrapper::after {\r\n  content: '';\r\n  display: block;\r\n  position: absolute;\r\n  bottom: -3px;\r\n  left: 0;\r\n  right: 0;\r\n  height: 3px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\r\n  background-size: 10px 3px;\r\n}\r\n\r\n.ticket__check-title {\r\n  font-weight: 700;\r\n  font-size: 2.2rem;\r\n  text-transform: uppercase;\r\n  color: #C76F00;\r\n}\r\n\r\n.ticket__info {\r\n  font-size: 1.6rem;\r\n  color: #000000;\r\n}\r\n.ticket__info + .ticket__info {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.ticket__details {\r\n  font-weight: 700;\r\n}\r\n\r\n.ticket__hint {\r\n  font-weight: 300;\r\n  font-size: 1.4rem;\r\n  margin-top: 3rem;\r\n}\r\n.ticket__hint + .ticket__hint {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.ticket__info-qr {\r\n  display: block;\r\n  margin: 3rem auto 0;\r\n  width: 20rem;\r\n  height: 20rem;\r\n}\r\n\r\n@media screen and (min-width: 479px) {\r\n  .page-nav .page-nav__day {\r\n    padding: 1rem 2rem;\r\n  }\r\n}\r\n@media screen and (min-width: 990px) {\r\n  .page-header, nav, main {\r\n    width: 990px;\r\n    margin: auto;\r\n  }\r\n\r\n  .movie, .buying {\r\n    border-radius: 2px;\r\n  }\r\n\r\n  .buying__info-hint {\r\n    display: none;\r\n  }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
