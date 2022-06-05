@@ -1,11 +1,13 @@
-import { getRequest } from "../../lib/api";
-
 export const fetchDataClient = () => {
   return { type: 'LOADING_DATA_CLIENT' };
 }
 
 export const fetchClientComplete = () => {
   return { type: 'LOADING_CLIENT_COMPLETE' };
+}
+
+export const fetchLoadingSuccess = (data) => {
+  return { type: 'LOADING_CLIENT_SUCCESS', payload: { data } };
 }
 
 export const selectSeat = (add_seat) => {

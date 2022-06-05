@@ -1,7 +1,9 @@
 const initState = {
   loading: false,
   error: null,
-  selectSeats: [],
+  data: JSON.parse(localStorage.getItem('clientData')) || null,
+  selectSeats: JSON.parse(localStorage.getItem('selectSeats')) || [],
+  dateSeans: '05-06-2022',
 }
 
 const serviceClientReduser = ( state = initState, action ) => {
@@ -10,13 +12,20 @@ const serviceClientReduser = ( state = initState, action ) => {
       return { ...state, loading: true, error: null };
     case 'LOADING_CLIENT_COMPLETE':
       return { ...state, loading: false,};
+    case 'LOADING_CLIENT_SUCCESS':
+      const { data } = action.payload;
+      localStorage.setItem('clientData', JSON.stringify(data));
+      return { ...state, loading: false, error: null, data};
     case 'SELECT_SEAT':
       const { add_seat } = action.payload;
-      return { ...state, loading: false, error: null, selectSeats: [...state.selectSeats, add_seat ] };
+      const newSelectSeats = [...state.selectSeats, add_seat ]
+      localStorage.setItem('selectSeats', JSON.stringify(newSelectSeats));
+      return { ...state, loading: false, error: null, selectSeats: newSelectSeats };
     case 'REMOVE_SEAT':
       const { remove_id } = action.payload;
-      const selectSeats = state.selectSeats.filter(item => item.id !==  remove_id)
-      return { ...state, loading: false, error: message };
+      const selectSeats = state.selectSeats.filter(item => item.number_seat !== remove_id)
+      localStorage.setItem('selectSeats', JSON.stringify(selectSeats))
+      return { ...state, loading: false, error: null, selectSeats };
     case 'FETCH_ERROR_CLIENT':
       const { message } = action.payload;
       return { ...state, loading: false, error: message };

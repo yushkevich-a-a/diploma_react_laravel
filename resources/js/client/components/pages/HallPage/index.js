@@ -1,34 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import ClientBackgroundWrapper from '../../templates/ClientBackgroundWrapper';
-import Header from '../../organisms/Header';
 import Main from '../../organisms/Main';
 import { getRequest } from '../../../../lib/api';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import HallClient from '../../organisms/HallClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoadingSuccess } from '../../../../store/clientReducer/action';
 
-function ClientHall(props) {
+function HallPage(props) {
   const { seans_id } = useParams();
-  const [ data, setData ] = useState(null);
-  const [ selectSeat, setSelectSeat ] = useState([]);
+  const { data, dateSeans } = useSelector( store => store.clientReduser );
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   useEffect(async ()=> {
     try {
-      const data = await getRequest(`/client/seans/${seans_id}/date/${'sklls'}`);
-      setData( data );
+      const data = await getRequest(`/client/seans/${seans_id}/date/${dateSeans}`);
+      dispatch(fetchLoadingSuccess(data));
     } catch (e) {
 
     }
   }, [])
-  
-  const handleSelectSeat = (seat) => {
-    if (selectSeat.find( item => item.id === seat.id)) {
-      return setSelectSeat([...selectSeat.filter( item => item.id !== seat.id)])
-    }
-    setSelectSeat([...selectSeat, seat]);
-
-  }
 
   return (
     <ClientBackgroundWrapper>
@@ -41,14 +35,14 @@ function ClientHall(props) {
               <p className="buying__info-hall">{data.hall.name}</p>          
             </div>
           </div>
-          <HallClient handleSelect={handleSelectSeat} rows={data.hall.rows} places={data.hall.places} seats={data.hall.seats} selectedSeats={selectSeat}/>
-          <button className="acceptin-button" onClick={()=>console.log('Забронировать')} >Забронировать</button>
+          <HallClient rows={data.hall.rows} places={data.hall.places} seats={data.hall.seats} />
+          <button className="acceptin-button" onClick={()=>{navigate('/payment')}} >Забронировать</button>
         </section>}     
       </Main>
     </ClientBackgroundWrapper>
   )
 }
 
-ClientHall.propTypes = {};
+HallPage.propTypes = {};
 
-export default ClientHall;
+export default HallPage;
