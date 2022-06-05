@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import serviceAdminReduser from './adminReducer/reducer';
-import serviceClientReduser from './clientReducer/reducer';
+import serviceAdminReducer from './adminReducer/reducer';
+import serviceClientReducer from './clientReducer/reducer';
 
 const reducers = combineReducers({
-  clientReduser: serviceClientReduser,
-  adminReduser: serviceAdminReduser,
+  clientReducer: serviceClientReducer,
+  adminReducer: serviceAdminReducer,
 
 });
 

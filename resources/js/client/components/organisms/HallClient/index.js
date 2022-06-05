@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeSeat, selectSeat } from '../../../../store/clientReducer/action';
 
 function HallClient(props) {
-  const { data, selectSeats } = useSelector( store => store.clientReduser );
+  const { data, selectSeats } = useSelector( store => store.clientReducer );
   const { rows, places, seats }= props;
   const dispatch = useDispatch()
 

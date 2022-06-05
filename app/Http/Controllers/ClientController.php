@@ -7,6 +7,7 @@ use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Session;
 use App\Models\Ticket;
+use App\Models\Order;
 
 class ClientController extends Controller
 {
@@ -63,15 +64,20 @@ class ClientController extends Controller
         $session = Session::firstWhere('id', $id);
         $session->film;
         $session->hall->seats;
+        $orders = Order::where('session_id',$session->id)
+        ->where('date_session', $date)->get();
+
         foreach ($session->hall->seats as &$seat) {
-            $ticket = Ticket::where('session_id',$session->id)
-                ->where('date_session', $date)
+            foreach ($orders as $order) {
+                $ticket = Ticket::where('order_id',$order->id)
                 ->where('number_seat', $seat->number_seat)
-                ->firstOr(function () {
+                ->firstOr( function () {
                     return false;
-                });
-            if ($ticket) {
-                $seat->status = 'taken';
+                } );
+                
+                if ($ticket) {
+                    $seat->status = 'taken';
+                }
             }
         }
 

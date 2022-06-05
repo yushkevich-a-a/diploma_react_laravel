@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('url_code');
             $table->integer('session_id');
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
-            $table->string('qr_code');
-            $table->float('sum');
-
+            $table->string('date_session');
         });
     }
 

@@ -11,8 +11,8 @@ class Order extends Model
 
     protected $fillable = [
         'session_id',
-        'qr_code',
-        'sum'
+        'url_code',
+        'date_session',
     ];
 
     public function session()

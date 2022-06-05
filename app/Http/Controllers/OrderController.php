@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class OrderController extends Controller
 {
@@ -24,15 +26,20 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        if (Order::firstWhere('title', $request->title)) {
-            return response('фильм с таким названием уже существует', 409);
-        }
-
-        $session = Order::create([
+    {   
+        $text = $request->text_data;
+        $image = \QrCode::format('png')->margin(1)->size(500)->encoding('UTF-8')->generate($text);
+        $output_file = 'order/code/' . uniqid() . '.png';
+        Storage::disk('public')->put($output_file, $image);
+        $url = Storage::url($output_file);
+        $order = Order::create([
             'session_id' => $request->session_id,
-            'qr_code' => $request->qr_code,
+            'date_session' => $request->date_session,
+            'url_code' => $url
         ]);
+
+        
+        return response()->json($order);
     }
 
     /**
@@ -41,7 +48,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
 //     * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(int $id)
     {
         return response()->json([
             "status" => "метод показа заказа",

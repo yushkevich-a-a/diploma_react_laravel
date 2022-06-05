@@ -18,11 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->integer('session_id');
-            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
             $table->integer('number_seat');
-            $table->foreign('number_seat')->references('number_seat')->on('seats');
-            $table->string('date_session');
         });
     }
 

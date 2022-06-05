@@ -11,9 +11,7 @@ class Ticket extends Model
 
     protected $fillable = [
         'order_id',
-        'session_id',
-        'number_seat',
-        'date_session'
+        'number_seat'
     ];
 
     public function order()

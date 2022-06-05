@@ -22,6 +22,7 @@ Route::post('token', [\App\Http\Controllers\ApiTokenController::class, 'createTo
 
 Route::prefix('/client')->group(function() {
     Route::get('/seans/{id}/date/{date}', [\App\Http\Controllers\ClientController::class, 'dateSeans']);
+    Route::post('/ticket', [\App\Http\Controllers\OrderController::class, 'store']);
     Route::get('/', [\App\Http\Controllers\ClientController::class, 'index']);
 });
 

@@ -1,12 +1,14 @@
+
+
 const initState = {
   loading: false,
   error: null,
   data: JSON.parse(localStorage.getItem('clientData')) || null,
   selectSeats: JSON.parse(localStorage.getItem('selectSeats')) || [],
-  dateSeans: '05-06-2022',
+  dateSeans: JSON.parse(localStorage.getItem('dateSeans')) || null,
 }
 
-const serviceClientReduser = ( state = initState, action ) => {
+const serviceClientReducer = ( state = initState, action ) => {
   switch (action.type) {
     case 'LOADING_DATA_CLIENT':
       return { ...state, loading: true, error: null };
@@ -26,16 +28,21 @@ const serviceClientReduser = ( state = initState, action ) => {
       const selectSeats = state.selectSeats.filter(item => item.number_seat !== remove_id)
       localStorage.setItem('selectSeats', JSON.stringify(selectSeats))
       return { ...state, loading: false, error: null, selectSeats };
+    case 'SELECT_DATE':
+      const { dateSeans } = action.payload;
+      localStorage.setItem('dateSeans', JSON.stringify(dateSeans));
+      return { ...state, dateSeans};
     case 'FETCH_ERROR_CLIENT':
       const { message } = action.payload;
       return { ...state, loading: false, error: message };
     case 'FETCH_ERROR_CLIENT_COMPLETE':
       return { ...state, error: null };
     case 'RESET_STATE_CLIENT':
+      localStorage.clear();
       return { ...initState };
     default: 
       return { ...state };
   }
 }
 
-export default serviceClientReduser;
+export default serviceClientReducer;

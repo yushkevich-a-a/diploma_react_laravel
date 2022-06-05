@@ -11,10 +11,10 @@ import { fetchLoadingSuccess } from '../../../../store/clientReducer/action';
 
 function HallPage(props) {
   const { seans_id } = useParams();
-  const { data, dateSeans } = useSelector( store => store.clientReduser );
+  const { data, dateSeans } = useSelector( store => store.clientReducer );
   const navigate = useNavigate()
   const dispatch = useDispatch();
-
+  console.log(data);
   useEffect(async ()=> {
     try {
       const data = await getRequest(`/client/seans/${seans_id}/date/${dateSeans}`);

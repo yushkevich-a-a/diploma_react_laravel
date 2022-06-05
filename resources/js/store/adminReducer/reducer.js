@@ -5,7 +5,7 @@ const initState = {
   films: [],
 }
 
-const serviceAdminReduser = ( state = initState, action ) => {
+const serviceAdminReducer = ( state = initState, action ) => {
   switch (action.type) {
     case 'FETCH_DATA':
       return { ...state, loading: true, error: null };
@@ -29,4 +29,4 @@ const serviceAdminReduser = ( state = initState, action ) => {
   }
 }
 
-export default serviceAdminReduser;
+export default serviceAdminReducer;

@@ -26,6 +26,10 @@ export const fetchErrorCLientComplete = (message) => {
   return { type: 'FETCH_ERROR_CLIENT_COMPLETE' };
 }
 
+export const fetchSelectDate = (dateSeans) => {
+  return { type: 'SELECT_DATE', payload: { dateSeans } };
+}
+
 export const resetStateClient = () => {
   return { type: 'RESET_STATE_CLIENT' };
 }
