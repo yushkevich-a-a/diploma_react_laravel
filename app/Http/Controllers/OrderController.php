@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -37,6 +38,14 @@ class OrderController extends Controller
             'date_session' => $request->date_session,
             'url_code' => $url
         ]);
+
+        foreach($request->selectSeats as $seat) {
+            Ticket::create([
+                'order_id' => $order->id,
+                'number_seat' => $seat['number_seat'],
+            ]);
+            // return response()->json($seat);
+        }
 
         
         return response()->json($order);

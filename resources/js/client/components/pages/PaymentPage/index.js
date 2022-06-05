@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux';
 import ClientBackgroundWrapper from '../../templates/ClientBackgroundWrapper';
@@ -6,12 +6,18 @@ import Main from '../../organisms/Main';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import { useNavigate } from 'react-router';
 import { postRequest } from '../../../../lib/api';
-import { resetStateClient } from '../../../../store/clientReducer/action';
 
 function PaymentPage(props) {
   const { data, selectSeats, dateSeans } = useSelector( store => store.clientReducer );
   const [ orderData, setOrderData ] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data === null) {
+      navigate('/client', { replace: true });
+    }
+  }, []) 
 
   const sumTickets = selectSeats.map( item => {
     if (item.status === 'standart') {
@@ -27,10 +33,16 @@ function PaymentPage(props) {
 В зале: ${data.hall.name}
 Начало сеанса: ${getHoursAndMinutes(data.start_session)}
 Дата: ${dateSeans}`;
-      const obj = { session_id: data.id, date_session: dateSeans, text_data: stringToQR };
+      const obj = { 
+        session_id: data.id,
+        date_session: dateSeans,
+        text_data: stringToQR,
+        selectSeats: selectSeats,
+      };
       const respData = await postRequest('/client/ticket', obj);
       setOrderData(respData);
-      dispatch(resetStateClient());
+      localStorage.clear();
+      // dispatch(resetStateClient());
     } catch (e) {
       console.log(e.message);
     }
@@ -38,7 +50,7 @@ function PaymentPage(props) {
 
   return (
     <ClientBackgroundWrapper>
-      <Main>
+      { data && <Main>
       <header className="tichet__check">
         <h2 className="ticket__check-title">Вы выбрали билеты:</h2>
       </header>
@@ -66,7 +78,7 @@ function PaymentPage(props) {
             </>
           }
         </div>
-      </Main>
+      </Main>}
     </ClientBackgroundWrapper>
   )
 }
