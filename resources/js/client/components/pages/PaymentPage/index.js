@@ -6,6 +6,7 @@ import Main from '../../organisms/Main';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import { useNavigate } from 'react-router';
 import { postRequest } from '../../../../lib/api';
+import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/action';
 
 function PaymentPage(props) {
   const { data, selectSeats, dateSeans } = useSelector( store => store.clientReducer );
@@ -27,6 +28,7 @@ function PaymentPage(props) {
   }).reduce((sum, current) => sum + current, 0);
 
   const handleSubmit = async () => {
+    dispatch(fetchDataClient());
     try {
       const stringToQR = `Билет на фильм: ${data.film.title}
 Места: ${selectSeats.map( item => { return item.number_seat }).join(', ')}
@@ -42,9 +44,9 @@ function PaymentPage(props) {
       const respData = await postRequest('/client/ticket', obj);
       setOrderData(respData);
       localStorage.clear();
-      // dispatch(resetStateClient());
+      dispatch(fetchClientComplete());
     } catch (e) {
-      console.log(e.message);
+      dispatch(fetchErrorCLient(e.message));
     }
   }
 

@@ -7,20 +7,21 @@ import { getRequest } from '../../../../lib/api';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import HallClient from '../../organisms/HallClient';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLoadingSuccess } from '../../../../store/clientReducer/action';
+import { fetchDataClient, fetchErrorCLient, fetchLoadingSuccess } from '../../../../store/clientReducer/action';
 
 function HallPage(props) {
   const { seans_id } = useParams();
   const { data, dateSeans } = useSelector( store => store.clientReducer );
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  console.log(data);
+
   useEffect(async ()=> {
+    dispatch(fetchDataClient());
     try {
       const data = await getRequest(`/client/seans/${seans_id}/date/${dateSeans}`);
       dispatch(fetchLoadingSuccess(data));
     } catch (e) {
-
+      dispatch(fetchErrorCLient(e.message));
     }
   }, [])
 
