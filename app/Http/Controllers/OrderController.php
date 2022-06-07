@@ -11,16 +11,6 @@ use Illuminate\Http\File;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return Order::paginate();
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,45 +39,5 @@ class OrderController extends Controller
 
         
         return response()->json($order);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-//     * @return \Illuminate\Http\Response
-     */
-    public function show(int $id)
-    {
-        return response()->json([
-            "status" => "метод показа заказа",
-        ], 201);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-//     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        return response()->json([
-            "status" => "метод обновления заказа",
-        ], 201);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-//     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        return response()->json([
-            "status" => "метод удаления заказа",
-        ], 201);
     }
 }

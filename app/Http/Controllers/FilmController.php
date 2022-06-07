@@ -63,24 +63,10 @@ class FilmController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Film  $film
-    * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Film $film)
-    {
-        return response()->json([
-            'status' => 'здесь типа изменение состояния фильма, редактирование',
-        ], 201);
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Film  $film
-//     * @return \Illuminate\Http\Response
+    * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {
