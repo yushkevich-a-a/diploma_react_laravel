@@ -8,7 +8,7 @@ import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../store/a
 import CreateHallPopup from '../Popups/CreateHallPopup';
 
 function CreateHall(props) {
-  const { data } = useSelector( store => store.adminReduser );
+  const { data } = useSelector( store => store.adminReducer );
   const [ openPopup, setOpenPopup ] = useState(false);
   const dispatch = useDispatch()
 

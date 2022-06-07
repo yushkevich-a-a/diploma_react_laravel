@@ -8,7 +8,7 @@ import { getRequest, putRequest } from '../../../../lib/api';
 import { fetchData, fetchDataComplete, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/action';
 
 function OpenSale(props) {
-  const { data } = useSelector( store => store.adminReduser );
+  const { data } = useSelector( store => store.adminReducer );
   const [ hallData, setHallData ] = useState(null);
   const dispatch = useDispatch();
 

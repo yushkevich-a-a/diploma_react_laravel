@@ -51,8 +51,7 @@ function Calendar(props) {
       {
         dateList.map( item => <a key={format(item, 'dd-MM-yyyy')} 
         onClick={() => handleClick(item)}
-        className={`page-nav__day ${format(item, 'dd-MM-yyyy') === today ? 'page-nav__day_today' : ''} ${format(item, 'dd-MM-yyyy') === dateSeans ? 'page-nav__day_chosen' : ''}`} 
-        href="#">
+        className={`page-nav__day ${format(item, 'dd-MM-yyyy') === today ? 'page-nav__day_today' : ''} ${format(item, 'dd-MM-yyyy') === dateSeans ? 'page-nav__day_chosen' : ''}`} >
         <span className="page-nav__day-week">{
           format(item, 'EEEEEE', { locale: ru})
         }</span><span className="page-nav__day-number">{format(item, 'd', { locale: ru})}</span>

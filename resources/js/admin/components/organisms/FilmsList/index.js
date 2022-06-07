@@ -4,7 +4,7 @@ import { fetchFilms } from '../../../../store/adminReducer/action';
 import { useDispatch, useSelector } from 'react-redux'
 
 function FilmsList(props) {
-  const { films } = useSelector( store => store.adminReduser );
+  const { films } = useSelector( store => store.adminReducer );
 
   return (
     <div className="conf-step__movies">

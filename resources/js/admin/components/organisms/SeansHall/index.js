@@ -25,6 +25,9 @@ function SeansHall(props) {
   return (
     <div className="conf-step__seances-hall">
       <h3 className="conf-step__seances-title">{item.name}</h3>
+      <label className="conf-step__label">
+        Для добавление сеанса кликните по веременной шкале, для удаления кликните по сеансу.
+      </label>
       <div className="conf-step__seances-timeline" onClick={openPopupCreateSession}>
         {
           seansData.map( item => <FilmOnTimeLine key={item.id} item={item} handleUpdateData={handleUpdateData}/> )

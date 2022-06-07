@@ -12,7 +12,7 @@ const intData = {
 }
 
 function CreateSessionPopup(props) {
-  const { films } = useSelector( store => store.adminReduser );
+  const { films } = useSelector( store => store.adminReducer );
   const { handleUpdateData, handleClosePopup, item } = props;
   const [ dataField, setDataField ] = useState({...intData});
   const dispatch = useDispatch();

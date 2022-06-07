@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import SeansHall from '../SeansHall';
 
 function ListSeansHall(props) {
-  const { data } = useSelector( store => store.adminReduser );
+  const { data } = useSelector( store => store.adminReducer );
 
 
   return (

@@ -27,6 +27,6 @@ function Popup(props) {
   )
 }
 
-Popup.propTypes = {}
+Popup.propTypes = {};
 
 export default Popup;

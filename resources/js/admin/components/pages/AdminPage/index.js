@@ -12,7 +12,7 @@ import { getRequest } from '../../../../lib/api';
 import AdminBackgroundWrapper from '../../templates/AdminBackgroundWrapper';
 
 function AdminPage(props) {
-  const { loading, error } = useSelector( store => store.adminReduser );
+  const { loading, error } = useSelector( store => store.adminReducer );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

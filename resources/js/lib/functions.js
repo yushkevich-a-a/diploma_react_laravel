@@ -8,3 +8,7 @@ export const ConvertingStringNumbersToTwoCharacters = (value) => {
   const result = (value < 10) ? '0' + value : value;
   return String(result);
 }
+
+export const getMinutesFromStartDay = (date) => {
+  
+}

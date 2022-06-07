@@ -5,7 +5,7 @@ import Button from '../../atoms/Button/Button';
 import CreateFilmPopup from '../Popups/CreateFilmPopup';
 
 function CreateFilm(props) {
-  const { data } = useSelector( store => store.adminReduser );
+  const { data } = useSelector( store => store.adminReducer );
   const [ openPopup, setOpenPopup ] = useState(false);
 
   const handleClosePopup = () => {

@@ -31,7 +31,12 @@ function ClientPage(props) {
       {
         data && <Main>
           {
-            data.map( film => <Film key={film.id} item={film} /> )
+            data.map( film => {
+              if (film.halls.length === 0 ) {
+                return;
+              }
+            return <Film key={film.id} item={film} />
+          } )
           }
         </Main>
       }

@@ -16,7 +16,7 @@ function Login(props) {
     password: '',
   });
   const dispatch = useDispatch();
-  const { loading, error } = useSelector( store => store.adminReduser );
+  const { loading, error } = useSelector( store => store.adminReducer );
   const navigate = useNavigate();
 
   const handleChange = (e) => {
