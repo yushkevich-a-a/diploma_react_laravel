@@ -13,7 +13,7 @@ function Popup(props) {
           <div className="popup__header">
             <h2 className="popup__title">
               { title }
-              <a onClick={handleClose} className="popup__dismiss" href="#"><img src={close} alt="Закрыть"/></a>
+              <a onClick={handleClose} className="popup__dismiss"><img src={close} alt="Закрыть"/></a>
             </h2>
           </div>
           <div className="popup__wrapper">

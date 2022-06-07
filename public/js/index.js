@@ -7732,7 +7732,6 @@ function Popup(props) {
             children: [title, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
               onClick: handleClose,
               className: "popup__dismiss",
-              href: "#",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                 src: _assets_close_png__WEBPACK_IMPORTED_MODULE_1__["default"],
                 alt: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
