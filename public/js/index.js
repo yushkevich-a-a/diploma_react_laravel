@@ -8903,12 +8903,6 @@ function MovieSeansHall(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
       className: "movie-seances__list",
       children: item.sessions.map(function (session) {
-        var milliseconds = session.start_session * 60000;
-
-        if (dateSeansMilliseconds + milliseconds < Date.now()) {
-          return;
-        }
-
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           className: "movie-seances__time-block",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
