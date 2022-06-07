@@ -21,17 +21,11 @@ function MovieSeansHall(props) {
       <h3 className="movie-seances__hall-title">{item.name}</h3>
       <ul className="movie-seances__list">
         {
-          item.sessions.map( session => {
-            const milliseconds = session.start_session * 60000;
-            if ( (dateSeansMilliseconds + milliseconds) < Date.now() ) {
-              return;
-            }
-            return <li key={session.id} className="movie-seances__time-block">
+          item.sessions.map( session => <li key={session.id} className="movie-seances__time-block">
               <a className="movie-seances__time" onClick={(e) => handleClick(e, session.id)}>
                 {getHoursAndMinutes(session.start_session)}
               </a>
-            </li>
-            })
+            </li>)
         }
       </ul>
   </div>    
