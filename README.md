@@ -12,7 +12,7 @@
 -раскомментировать extension=pdo_sqlite
 -раскомментировать extension=sqlite3
 
-## Запуск
+## Настройка
 
 Скачиваем проект
 
@@ -25,6 +25,11 @@
     composer install
 
     npm install
+
+Переименовываем .env.example в .env и генерируем ключ базы данных командой
+
+    php artisan key:generate
+
 
 ## Настройка базы данных
 
