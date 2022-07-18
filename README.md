@@ -18,6 +18,8 @@
 
     git clone https://github.com/Yushkevich-A-A/diploma_react_laravel
 
+    cd diploma_react_laravel
+
 Устанавливаем все зависимости composer и npm
 
     composer install
@@ -26,11 +28,11 @@
 
 ## Настройка базы данных
 
-Переключаем laravel на работу с sqlite ->
-    в файле .env нужно: 
-        -указать тип DB_CONNECTION=sqlite
-        -в папке datebase создать файл с расширением .sqlite
-        -указать абсолютный путь к файлу .sqlite
+Переключаем laravel на работу с sqlite в файле .env нужно: 
+
+-указать тип DB_CONNECTION=sqlite
+-в папке datebase создать файл с расширением .sqlite
+-указать абсолютный путь к файлу .sqlite
 
 
 После установки всех зависимостей, необходимо запустить миграции с заранее подготовленными начальными данными
