@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
 
         $films = Film::get();
         
-        foreach($halls as $key=>$hall) {
+        foreach($halls as $key => $hall) {
             $film = $films[$key];
             $start_session = rand(0, 1000);
             $finish_session = $start_session + $film->duration;

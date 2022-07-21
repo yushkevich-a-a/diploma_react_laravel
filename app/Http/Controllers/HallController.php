@@ -18,8 +18,8 @@ class HallController extends Controller
     public function index()
     {
         return response()->json([
-            "status"=>"success",
-            "data"=>Hall::all(),
+            "status" => "success",
+            "data" => Hall::all(),
             ], 201);
     }
 
@@ -35,8 +35,8 @@ class HallController extends Controller
         $hall = Hall::firstWhere('id', $hall_id->id);
 
         return response()->json([
-            "status"=>"success",
-            "data"=>Hall::all(),
+            "status" => "success",
+            "data" => Hall::all(),
             ], 201);
     }
 
@@ -56,7 +56,7 @@ class HallController extends Controller
 
         return response()->json([
             "status" => "success",
-            "data"=>$response_data,
+            "data" => $response_data,
         ], 201);
     }
 
@@ -73,15 +73,15 @@ class HallController extends Controller
             if ($request->reqData['VIP_price'] <= 0 || $request->reqData['usual_price'] <= 0)
             {
                 return response()->json([
-                    'status'=>'error',
-                    'data'=> "значение полей цены не может быть меньше нуля",
+                    'status' => 'error',
+                    'data' => "значение полей цены не может быть меньше нуля",
                 ], 201);
             }
             if (($request->reqData['VIP_price']) < ($request->reqData['usual_price']))
             {
                 return response()->json([
-                    'status'=>'error',
-                    'data'=> "стоимость VIP мест не может быть меньше обычных",
+                    'status' => 'error',
+                    'data' => "стоимость VIP мест не может быть меньше обычных",
                 ], 201);
             }
         }
@@ -91,8 +91,8 @@ class HallController extends Controller
         }
         $hall->save();
         return response()->json([
-            'status'=>'success',
-            'data'=>$hall,
+            'status' => 'success',
+            'data' => $hall,
         ], 201);
     }
 
@@ -108,7 +108,7 @@ class HallController extends Controller
         }
         return response()->json([
             "status" => "success",
-            "data"=>Hall::all(),
+            "data" => Hall::all(),
         ], 201);
     }
 }

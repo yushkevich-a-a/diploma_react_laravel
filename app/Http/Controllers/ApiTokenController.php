@@ -14,14 +14,14 @@ class ApiTokenController extends Controller
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
-                'status'=>'error',
-                'data'=>'user not found',
+                'status' => 'error',
+                'data' => 'user not found',
             ], 201);
         }
         $token = $user->createToken($user->name);
         return response()->json([
-            'status'=>'success',
-            'data'=>$token->plainTextToken,
+            'status' => 'success',
+            'data' => $token->plainTextToken,
         ], 201);
     }
 
@@ -30,8 +30,8 @@ class ApiTokenController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'status'=>'success',
-            'data'=>'token deleted',
+            'status' => 'success',
+            'data' => 'token deleted',
         ], 201);
     }
 }
