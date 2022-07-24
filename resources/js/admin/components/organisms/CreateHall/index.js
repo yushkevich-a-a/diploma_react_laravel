@@ -4,11 +4,11 @@ import ConfigSection from '../ConfigSection';
 import { deleteRequest } from '../../../../lib/api';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
-import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/action';
+import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/adminSlice';
 import CreateHallPopup from '../Popups/CreateHallPopup';
 
 function CreateHall(props) {
-  const { data } = useSelector( store => store.adminReducer );
+  const { data } = useSelector( store => store.admin );
   const [ openPopup, setOpenPopup ] = useState(false);
   const dispatch = useDispatch()
 

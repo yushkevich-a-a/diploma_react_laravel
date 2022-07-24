@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 function SelectHall(props) {
   const { handleRequestData, resetData, name } = props;
-  const { data } = useSelector( store => store.adminReducer );
+  const { data } = useSelector( store => store.admin );
   const [ selectedHall, setSelectedHall ] = useState(0);
 
   useEffect(() => {

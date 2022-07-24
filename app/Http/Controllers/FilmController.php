@@ -45,8 +45,8 @@ class FilmController extends Controller
 
 
         return response()->json([
-            "status"=>"success",
-            "data"=>Film::all(),
+            "status" => "success",
+            "data" => Film::all(),
             ], 201);
 
     }

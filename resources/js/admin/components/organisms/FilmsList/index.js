@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { fetchFilms } from '../../../../store/adminReducer/action';
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 function FilmsList(props) {
-  const { films } = useSelector( store => store.adminReducer );
+  const { films } = useSelector( store => store.admin );
 
   return (
     <div className="conf-step__movies">

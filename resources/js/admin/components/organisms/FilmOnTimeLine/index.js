@@ -6,7 +6,7 @@ import DeleteSessionPopup from '../Popups/DeleteSessionPopup';
 const colorFilm = [ '#caff85', '#85ff89', '#85ffd3', '#85e2ff', '#8599ff', '#ba85ff', '#ff85fb', '#ff85b1', '#ffa285']
 
 function FilmOnTimeLine(props) {
-  const { films } = useSelector( store => store.adminReducer );
+  const { films } = useSelector( store => store.admin );
   const { item, handleUpdateData } = props;
   const [ openDelete, setDeleteCreate ] = useState(false);
   const filmIndex = films.findIndex( film => Number(film.id) === Number(item.film_id));

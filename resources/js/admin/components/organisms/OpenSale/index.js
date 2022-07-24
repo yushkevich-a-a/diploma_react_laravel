@@ -5,10 +5,10 @@ import SelectHall from '../SelectHall';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
 import { getRequest, putRequest } from '../../../../lib/api';
-import { fetchData, fetchDataComplete, fetchDataError, fetchDataSuccess } from '../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/adminSlice';
 
 function OpenSale(props) {
-  const { data } = useSelector( store => store.adminReducer );
+  const { data } = useSelector( store => store.admin );
   const [ hallData, setHallData ] = useState(null);
   const dispatch = useDispatch();
 

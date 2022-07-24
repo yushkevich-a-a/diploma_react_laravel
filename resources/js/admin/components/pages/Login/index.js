@@ -4,7 +4,7 @@ import Header from '../../organisms/Header';
 import { postRequest } from '../../../../lib/api';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/adminSlice';
 import GlobalLoader from '../../organisms/Loaders/GlobalLoader';
 import Error from '../../organisms/Errors/Error';
 import Button from '../../atoms/Button/Button';
@@ -16,7 +16,7 @@ function Login(props) {
     password: '',
   });
   const dispatch = useDispatch();
-  const { loading, error } = useSelector( store => store.adminReducer );
+  const { loading, error } = useSelector( store => store.admin );
   const navigate = useNavigate();
 
   const handleChange = (e) => {

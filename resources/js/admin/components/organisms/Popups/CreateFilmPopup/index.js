@@ -7,7 +7,7 @@ import Button from '../../../atoms/Button/Button';
 import FormRow from '../../../molecules/InputRow';
 import TextareaRow from '../../../molecules/TextareaRow';
 import InputFileRow from '../../../molecules/InputFileRow';
-import { fetchData, fetchDataError, fetchFilmsSuccess } from '../../../../../store/adminReducer/action';
+import { fetchData, fetchDataError, fetchFilmsSuccess } from '../../../../../store/adminReducer/adminSlice';
 
 const initData = {
   title: '',

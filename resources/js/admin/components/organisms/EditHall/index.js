@@ -6,7 +6,7 @@ import Hall from '../Hall';
 import Button from '../../atoms/Button/Button';
 import SelectHall from '../SelectHall';
 import { useDispatch } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/adminSlice';
 
 function EditHall(props) {
   const [ hallData, setHallData ] = useState(null);

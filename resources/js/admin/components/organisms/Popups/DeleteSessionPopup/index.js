@@ -4,7 +4,7 @@ import { deleteRequest } from '../../../../../lib/api';
 import Popup from '../Popup';
 import Button from '../../../atoms/Button/Button';
 import { useDispatch } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/adminSlice';
 
 function DeleteSessionPopup(props) {
   const { handleUpdateData, handleClosePopup, sessionId, filmTitle } = props;

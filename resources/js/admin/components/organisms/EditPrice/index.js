@@ -5,7 +5,7 @@ import Button from '../../atoms/Button/Button';
 import { getRequest, postRequest, putRequest } from '../../../../lib/api';
 import SelectHall from '../SelectHall';
 import { useDispatch } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../store/adminReducer/adminSlice';
 
 function EditPrice(props) {
   const [ hallData, setHallData ] = useState({id: 0, usual_price: 0, VIP_price: 0});

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Popup from '../Popup'
 import { postRequest } from '../../../../../lib/api';
 import Button from '../../../atoms/Button/Button';
-import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../../store/adminReducer/action';
+import { fetchData, fetchDataError, fetchDataSuccess } from '../../../../../store/adminReducer/adminSlice';
 
 function CreateHallPopup(props) {
   const { handleClosePopup } = props;

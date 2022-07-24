@@ -4,7 +4,7 @@ import './style.css';
 import Header from '../../organisms/Header';
 import Main from '../../organisms/Main';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAdminData, fetchData, fetchDataComplete, fetchDataError, fetchFilms } from '../../../../store/adminReducer/action';
+import { fetchAdminData, fetchData, fetchDataComplete, fetchDataError, fetchFilms } from '../../../../store/adminReducer/adminSlice';
 import GlobalLoader from '../../organisms/Loaders/GlobalLoader';
 import Error from '../../organisms/Errors/Error';
 import { useNavigate } from 'react-router';
@@ -12,7 +12,7 @@ import { getRequest } from '../../../../lib/api';
 import AdminBackgroundWrapper from '../../templates/AdminBackgroundWrapper';
 
 function AdminPage(props) {
-  const { loading, error } = useSelector( store => store.adminReducer );
+  const { loading, error } = useSelector( store => store.admin );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

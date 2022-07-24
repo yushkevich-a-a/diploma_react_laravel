@@ -4,7 +4,7 @@ import Popup from '../Popup'
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../../atoms/Button/Button';
 import { postRequest } from '../../../../../lib/api';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/action';
+import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/adminSlice';
 
 const intData = {
   start_time: '00:00', 
@@ -12,7 +12,7 @@ const intData = {
 }
 
 function CreateSessionPopup(props) {
-  const { films } = useSelector( store => store.adminReducer );
+  const { films } = useSelector( store => store.admin );
   const { handleUpdateData, handleClosePopup, item } = props;
   const [ dataField, setDataField ] = useState({...intData});
   const dispatch = useDispatch();
