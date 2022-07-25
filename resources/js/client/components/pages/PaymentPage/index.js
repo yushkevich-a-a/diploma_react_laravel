@@ -6,7 +6,7 @@ import Main from '../../organisms/Main';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import { useNavigate } from 'react-router';
 import { postRequest } from '../../../../lib/api';
-import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/clientSlice';
+import { fetchClientComplete, fetchDataClient, fetchErrorCLient, resetStateClient } from '../../../../store/clientReducer/clientSlice';
 
 function PaymentPage(props) {
   const { data, selectSeats, dateSeans } = useSelector( store => store.client );
@@ -16,7 +16,7 @@ function PaymentPage(props) {
 
   useEffect(() => {
     if (data === null) {
-      navigate('/client', { replace: true });
+      navigate('/client');
     }
   }, []) 
 
@@ -43,8 +43,9 @@ function PaymentPage(props) {
       };
       const respData = await postRequest('/client/ticket', obj);
       setOrderData(respData);
-      localStorage.clear();
       dispatch(fetchClientComplete());
+      localStorage.clear();
+      dispatch(resetStateClient());
     } catch (e) {
       dispatch(fetchErrorCLient(e.message));
     }

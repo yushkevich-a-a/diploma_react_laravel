@@ -39,7 +39,7 @@ function HallPage(props) {
           </div>
           <HallClient rows={data.hall.rows} places={data.hall.places} seats={data.hall.seats} />
           {
-            !!selectSeats.length && <Button handleClick={()=>{navigate('/payment')}} title='Забронировать' type='submit' />
+            !!selectSeats.length && <Button handleClick={()=>{navigate('/payment', {replace: true})}} title='Забронировать' type='submit' />
           }
           {
             !selectSeats.length && <Button title='Выберите место'/>

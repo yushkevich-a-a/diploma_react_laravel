@@ -7,7 +7,7 @@ import Main from '../../organisms/Main';
 import { getRequest } from '../../../../lib/api';
 import Film from '../../organisms/Film';
 import { useDispatch } from 'react-redux';
-import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/clientSlice';
+import { fetchClientComplete, fetchDataClient, fetchErrorCLient, resetStateClient } from '../../../../store/clientReducer/clientSlice';
 
 function ClientPage(props) {
   const [ data, setData ] = useState(null);
@@ -15,6 +15,7 @@ function ClientPage(props) {
 
   useEffect(async ()=> {
     localStorage.clear();
+    dispatch(resetStateClient());
     dispatch(fetchDataClient());
     try {
       const data = await getRequest('/client');
@@ -23,7 +24,7 @@ function ClientPage(props) {
     } catch (e) {
       dispatch(fetchErrorCLient(e.message));
     }
-  }, [])
+  }, []);
 
   return (
     <ClientBackgroundWrapper>

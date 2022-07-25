@@ -49,7 +49,7 @@ const clientSlice = createSlice({
       state.dateSeans = action.payload;
     },
     resetStateClient (state) {
-      state = {...initialState};
+      state.selectSeats = [];
     },
   }
 });

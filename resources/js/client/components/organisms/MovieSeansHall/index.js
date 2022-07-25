@@ -13,7 +13,7 @@ function MovieSeansHall(props) {
 
   const handleClick = (e, id) => {
     e.preventDefault();
-    navigate(`/client/hall/seans/${id}`, { replace: true});
+    navigate(`/client/hall/seans/${id}`);
   }
 
   return (

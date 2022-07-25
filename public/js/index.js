@@ -10985,9 +10985,7 @@ function MovieSeansHall(props) {
 
   var handleClick = function handleClick(e, id) {
     e.preventDefault();
-    navigate("/client/hall/seans/".concat(id), {
-      replace: true
-    });
+    navigate("/client/hall/seans/".concat(id));
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -11087,29 +11085,30 @@ function ClientPage(props) {
         switch (_context.prev = _context.next) {
           case 0:
             localStorage.clear();
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.resetStateClient)());
             dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchDataClient)());
-            _context.prev = 2;
-            _context.next = 5;
+            _context.prev = 3;
+            _context.next = 6;
             return (0,_lib_api__WEBPACK_IMPORTED_MODULE_5__.getRequest)('/client');
 
-          case 5:
+          case 6:
             _data = _context.sent;
             setData(_data);
             dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchClientComplete)());
-            _context.next = 13;
+            _context.next = 14;
             break;
 
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](2);
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context["catch"](3);
             dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchErrorCLient)(_context.t0.message));
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[2, 10]]);
+    }, _callee, null, [[3, 11]]);
   })), []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_templates_ClientBackgroundWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_organisms_Calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_organisms_Main__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -11243,7 +11242,9 @@ function HallPage(props) {
           seats: data.hall.seats
         }), !!selectSeats.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_atoms_Button__WEBPACK_IMPORTED_MODULE_8__["default"], {
           handleClick: function handleClick() {
-            navigate('/payment');
+            navigate('/payment', {
+              replace: true
+            });
           },
           title: "\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
           type: "submit"
@@ -11330,9 +11331,7 @@ function PaymentPage(props) {
   var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (data === null) {
-      navigate('/client', {
-        replace: true
-      });
+      navigate('/client');
     }
   }, []);
   var sumTickets = selectSeats.map(function (item) {
@@ -11369,22 +11368,23 @@ function PaymentPage(props) {
             case 6:
               respData = _context.sent;
               setOrderData(respData);
-              localStorage.clear();
               dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchClientComplete)());
-              _context.next = 15;
+              localStorage.clear();
+              dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.resetStateClient)());
+              _context.next = 16;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](1);
               dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchErrorCLient)(_context.t0.message));
 
-            case 15:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 12]]);
+      }, _callee, null, [[1, 13]]);
     }));
 
     return function handleSubmit() {
@@ -12103,12 +12103,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "selectSeat": () => (/* binding */ selectSeat)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 var initialState = {
   loading: false,
@@ -12160,7 +12154,7 @@ var clientSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)(
       state.dateSeans = action.payload;
     },
     resetStateClient: function resetStateClient(state) {
-      state = _objectSpread({}, initialState);
+      state.selectSeats = [];
     }
   }
 });
