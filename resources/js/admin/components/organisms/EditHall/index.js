@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import ConfigSection from '../ConfigSection';
 import { getRequest, postRequest } from '../../../../lib/api';
 import Hall from '../Hall';
@@ -98,7 +97,5 @@ function EditHall(props) {
     </ConfigSection>
   )
 }
-
-EditHall.propTypes = {}
 
 export default EditHall;

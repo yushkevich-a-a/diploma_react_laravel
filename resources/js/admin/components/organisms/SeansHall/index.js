@@ -40,6 +40,8 @@ function SeansHall(props) {
   )
 }
 
-SeansHall.propTypes = {}
+SeansHall.propTypes = {
+  item: PropTypes.object.isRequired,
+}
 
 export default SeansHall;

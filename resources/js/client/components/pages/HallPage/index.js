@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router';
 import ClientBackgroundWrapper from '../../templates/ClientBackgroundWrapper';
 import Main from '../../organisms/Main';
@@ -49,7 +48,5 @@ function HallPage(props) {
     </ClientBackgroundWrapper>
   )
 }
-
-HallPage.propTypes = {};
 
 export default HallPage;

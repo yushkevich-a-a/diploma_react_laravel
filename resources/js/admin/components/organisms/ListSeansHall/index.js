@@ -1,6 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import SeansHall from '../SeansHall';
 
 function ListSeansHall(props) {
@@ -15,6 +14,4 @@ function ListSeansHall(props) {
   )
 }
 
-ListSeansHall.propTypes = {}
-
-export default ListSeansHall
+export default ListSeansHall;

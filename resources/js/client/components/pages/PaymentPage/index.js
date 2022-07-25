@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClientBackgroundWrapper from '../../templates/ClientBackgroundWrapper';
 import Main from '../../organisms/Main';
@@ -86,6 +85,4 @@ function PaymentPage(props) {
   )
 }
 
-PaymentPage.propTypes = {}
-
-export default PaymentPage
+export default PaymentPage;

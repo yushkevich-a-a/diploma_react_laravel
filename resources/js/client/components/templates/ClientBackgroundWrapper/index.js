@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 import baсkground from '../../../assets/background.jpg';
 import './style.css';
 import Header from '../../organisms/Header';
@@ -28,6 +27,4 @@ function ClientBackgroundWrapper(props) {
   )
 }
 
-ClientBackgroundWrapper.propTypes = {}
-
-export default ClientBackgroundWrapper
+export default ClientBackgroundWrapper;

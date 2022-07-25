@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Header from '../../organisms/Header';
 import { postRequest } from '../../../../lib/api';
 import { useNavigate } from 'react-router';
@@ -79,6 +78,4 @@ function Login(props) {
   )
 }
 
-Login.propTypes = {}
-
-export default Login
+export default Login;

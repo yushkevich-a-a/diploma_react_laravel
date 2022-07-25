@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import './style.css';
 
@@ -13,6 +12,4 @@ function Header(props) {
   )
 }
 
-Header.propTypes = {}
-
-export default Header
+export default Header;

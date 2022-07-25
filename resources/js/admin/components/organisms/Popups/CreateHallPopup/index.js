@@ -48,6 +48,8 @@ function CreateHallPopup(props) {
   )
 }
 
-CreateHallPopup.propTypes = {}
+CreateHallPopup.propTypes = {
+  handleClosePopup: PropTypes.func.isRequired,
+}
 
 export default CreateHallPopup

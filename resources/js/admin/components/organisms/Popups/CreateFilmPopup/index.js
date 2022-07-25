@@ -73,6 +73,8 @@ function CreateFilmPopup(props) {
   )
 }
 
-CreateFilmPopup.propTypes = {};
+CreateFilmPopup.propTypes = {
+  handleClosePopup: PropTypes.func.isRequired,
+};
 
 export default CreateFilmPopup;

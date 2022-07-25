@@ -40,6 +40,10 @@ function SelectHall(props) {
   )
 }
 
-SelectHall.propTypes = {}
+SelectHall.propTypes = {
+  handleRequestData: PropTypes.func.isRequired,
+  resetData: PropTypes.func.isRequired, 
+  name: PropTypes.string.isRequired,
+}
 
 export default SelectHall

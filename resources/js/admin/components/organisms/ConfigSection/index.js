@@ -23,6 +23,8 @@ function ConfigSection(props) {
   )
 }
 
-ConfigSection.propTypes = {};
+ConfigSection.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default ConfigSection;

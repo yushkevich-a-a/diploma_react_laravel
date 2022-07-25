@@ -34,6 +34,8 @@ function MovieSeansHall(props) {
   )
 }
 
-MovieSeansHall.propTypes = {}
+MovieSeansHall.propTypes = {
+  item: PropTypes.object.isRequired,
+}
 
 export default MovieSeansHall

@@ -4,10 +4,10 @@ import { deleteRequest } from '../../../../../lib/api';
 import Popup from '../Popup';
 import Button from '../../../atoms/Button/Button';
 import { useDispatch } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError, fetchDataSuccess, updateAllData } from '../../../../../store/adminReducer/adminSlice';
+import { fetchData, fetchDataComplete, fetchDataError, updateAllData } from '../../../../../store/adminReducer/adminSlice';
 
 function DeleteFilmPopup(props) {
-  const { handleUpdateData, handleClosePopup, filmId, filmTitle } = props;
+  const { handleClosePopup, filmId, filmTitle } = props;
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -39,6 +39,10 @@ function DeleteFilmPopup(props) {
   )
 }
 
-DeleteFilmPopup.propTypes = {}
+DeleteFilmPopup.propTypes = {
+  handleClosePopup: PropTypes.func.isRequired,
+  filmId: PropTypes.number.isRequired,
+  filmTitle: PropTypes.string.isRequired,
+}
 
 export default DeleteFilmPopup

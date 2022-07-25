@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import ConfigSection from '../ConfigSection';
 import Button from '../../atoms/Button/Button';
 import { getRequest, postRequest, putRequest } from '../../../../lib/api';
@@ -71,7 +70,5 @@ function EditPrice(props) {
     </ConfigSection>
   )
 }
-
-EditPrice.propTypes = {}
 
 export default EditPrice;

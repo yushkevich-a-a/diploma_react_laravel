@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 function InputFileRow(props) {
   const { title, handleChange, nameField, value }  = props;
@@ -27,6 +27,10 @@ function InputFileRow(props) {
   )
 }
 
-InputFileRow.propTypes = {}
+InputFileRow.propTypes = {
+  handleChange: PropTypes.func, 
+  title: PropTypes.string.isRequired, 
+  nameField: PropTypes.string.isRequired
+}
 
 export default InputFileRow

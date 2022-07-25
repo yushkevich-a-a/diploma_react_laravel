@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ConfigSection from '../ConfigSection';
 import CreateFilm from '../CreateFilm';
 import FilmsList from '../FilmsList';
@@ -15,6 +14,4 @@ function EditSeanses(props) {
   )
 }
 
-EditSeanses.propTypes = {}
-
-export default EditSeanses
+export default EditSeanses;

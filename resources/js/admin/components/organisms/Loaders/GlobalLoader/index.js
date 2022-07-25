@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 import Loader from '../Loader';
 import './style.css';
 
@@ -9,8 +8,6 @@ function GlobalLoader(props) {
       <Loader />
     </div>
   )
-}
-
-GlobalLoader.propTypes = {}
+};
 
 export default GlobalLoader;

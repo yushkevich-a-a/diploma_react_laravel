@@ -77,6 +77,10 @@ function CreateSessionPopup(props) {
   )
 }
 
-CreateSessionPopup.propTypes = {}
+CreateSessionPopup.propTypes = {
+  handleUpdateData: PropTypes.func.isRequired, 
+  handleClosePopup: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+}
 
 export default CreateSessionPopup;

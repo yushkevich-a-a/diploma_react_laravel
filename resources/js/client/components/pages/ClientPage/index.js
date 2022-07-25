@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import ClientBackgroundWrapper from '../../templates/ClientBackgroundWrapper';
-import Header from '../../organisms/Header';
 import Calendar from '../../organisms/Calendar';
 import Main from '../../organisms/Main';
 import { getRequest } from '../../../../lib/api';
@@ -45,7 +43,4 @@ function ClientPage(props) {
     </ClientBackgroundWrapper>
   )
 }
-
-ClientPage.propTypes = {}
-
 export default ClientPage;

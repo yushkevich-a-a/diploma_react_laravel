@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import ConfigSection from '../ConfigSection';
 import SelectHall from '../SelectHall';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,7 +53,5 @@ function OpenSale(props) {
     </ConfigSection>
   )
 }
-
-OpenSale.propTypes = {};
 
 export default OpenSale;

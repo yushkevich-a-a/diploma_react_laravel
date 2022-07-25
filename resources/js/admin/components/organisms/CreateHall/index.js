@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
 import ConfigSection from '../ConfigSection';
 import { deleteRequest } from '../../../../lib/api';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +43,5 @@ function CreateHall(props) {
     </ConfigSection>
   )
 }
-
-CreateHall.propTypes = {}
 
 export default CreateHall;

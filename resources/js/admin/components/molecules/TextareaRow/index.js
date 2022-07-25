@@ -13,6 +13,13 @@ function TextareaRow(props) {
   )
 }
 
-TextareaRow.propTypes = {}
+TextareaRow.propTypes = {
+  handleChange: PropTypes.func.isRequired, 
+  title: PropTypes.string.isRequired, 
+  type: PropTypes.string, 
+  placeholder: PropTypes.string.isRequired,
+  nameField: PropTypes.string.isRequired, 
+  value: PropTypes.string.isRequired,
+}
 
 export default TextareaRow

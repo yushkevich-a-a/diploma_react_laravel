@@ -41,7 +41,8 @@ const adminSlice = createSlice({
         state.data = action.payload.hallData;
       },
     resetState (state) {
-      state = {...initialState};
+      state.data = [];
+      state.films = [];
     }
   }
 })

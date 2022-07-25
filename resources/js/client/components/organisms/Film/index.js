@@ -26,6 +26,8 @@ function Film(props) {
   )
 }
 
-Film.propTypes = {}
+Film.propTypes = {
+  item: PropTypes.object.isRequired,
+}
 
 export default Film

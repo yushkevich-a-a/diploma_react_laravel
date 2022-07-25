@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CreateHall from '../CreateHall';
 import EditHall from '../EditHall';
 import EditPrice from '../EditPrice';
@@ -19,7 +18,5 @@ function Main(props) {
     </main>
   )
 }
-
-Main.propTypes = {}
 
 export default Main;

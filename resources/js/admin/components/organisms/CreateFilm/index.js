@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../../atoms/Button/Button';
 import CreateFilmPopup from '../Popups/CreateFilmPopup';
@@ -24,6 +23,4 @@ function CreateFilm(props) {
   )
 }
 
-CreateFilm.propTypes = {}
-
-export default CreateFilm
+export default CreateFilm;

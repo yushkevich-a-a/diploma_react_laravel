@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 
 
 function Main(props) {
@@ -12,6 +11,4 @@ function Main(props) {
   )
 }
 
-Main.propTypes = {}
-
-export default Main
+export default Main;

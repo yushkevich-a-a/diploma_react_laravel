@@ -47,6 +47,10 @@ function HallClient(props) {
   )
 }
 
-HallClient.propTypes = {}
+HallClient.propTypes = {
+  rows: PropTypes.number.isRequired, 
+  places: PropTypes.number.isRequired,  
+  seats: PropTypes.array.isRequired, 
+}
 
 export default HallClient;

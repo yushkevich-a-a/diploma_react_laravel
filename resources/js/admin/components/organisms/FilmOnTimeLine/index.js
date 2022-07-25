@@ -42,6 +42,9 @@ function FilmOnTimeLine(props) {
   )
 }
 
-FilmOnTimeLine.propTypes = {};
+FilmOnTimeLine.propTypes = {
+  item: PropTypes.object.isRequired,
+  handleUpdateData: PropTypes.func.isRequired,
+};
 
 export default FilmOnTimeLine;

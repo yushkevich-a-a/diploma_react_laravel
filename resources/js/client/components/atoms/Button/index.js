@@ -10,7 +10,11 @@ function Button(props) {
   )
 }
 
-Button.propTypes = {}
+Button.propTypes = {
+  handleClick: PropTypes.func, 
+  title: PropTypes.string.isRequired, 
+  type: PropTypes.string.isRequired,
+}
 
 Button.defaultProps = {
   type: 'button',

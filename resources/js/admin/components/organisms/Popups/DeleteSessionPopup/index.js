@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { deleteRequest } from '../../../../../lib/api';
 import Popup from '../Popup';
 import Button from '../../../atoms/Button/Button';
@@ -36,6 +36,11 @@ function DeleteSessionPopup(props) {
   )
 }
 
-DeleteSessionPopup.propTypes = {}
+DeleteSessionPopup.propTypes = {
+  handleClosePopup: PropTypes.func.isRequired,
+  handleUpdateData: PropTypes.func.isRequired,
+  sessionId: PropTypes.number.isRequired,
+  filmTitle: PropTypes.string.isRequired,
+}
 
-export default DeleteSessionPopup
+export default DeleteSessionPopup;

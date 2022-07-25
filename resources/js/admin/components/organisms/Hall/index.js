@@ -27,6 +27,11 @@ const { row, col, handleClick, data } = props;
   )
 }
 
-Hall.propTypes = {}
+Hall.propTypes = {
+  row: PropTypes.number.isRequired,
+  col: PropTypes.number.isRequired, 
+  handleClick: PropTypes.func.isRequired, 
+  data: PropTypes.array.isRequired,
+}
 
 export default Hall

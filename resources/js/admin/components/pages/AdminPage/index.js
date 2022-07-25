@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './style.css';
 import Header from '../../organisms/Header';
 import Main from '../../organisms/Main';
@@ -53,7 +52,5 @@ function AdminPage(props) {
     </AdminBackgroundWrapper>
   )
 }
-
-AdminPage.propTypes = {}
 
 export default AdminPage;

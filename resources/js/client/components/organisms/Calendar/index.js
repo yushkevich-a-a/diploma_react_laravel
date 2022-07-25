@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { format, addDays, differenceInDays  } from 'date-fns';
 import { ru } from 'date-fns/locale'
@@ -65,6 +64,4 @@ function Calendar(props) {
   )
 }
 
-Calendar.propTypes = {}
-
-export default Calendar
+export default Calendar;

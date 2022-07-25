@@ -27,6 +27,9 @@ function Popup(props) {
   )
 }
 
-Popup.propTypes = {};
+Popup.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default Popup;

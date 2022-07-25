@@ -13,6 +13,9 @@ function Film(props) {
   )
 }
 
-Film.propTypes = {}
+Film.propTypes = {
+  data: PropTypes.object.isRequired,
+  handleCLickOnFilm: PropTypes.func.isRequired,
+}
 
 export default Film

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Film from '../Film';
 import DeleteFilmPopup from '../Popups/DeleteFilm';
@@ -33,7 +32,5 @@ function FilmsList(props) {
     </div>
   )
 }
-
-FilmsList.propTypes = {}
 
 export default FilmsList;
