@@ -8,10 +8,11 @@ import { getHoursAndMinutes } from '../../../../lib/functions';
 import HallClient from '../../organisms/HallClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataClient, fetchErrorCLient, fetchLoadingSuccess } from '../../../../store/clientReducer/clientSlice';
+import Button from '../../atoms/Button';
 
 function HallPage(props) {
   const { seans_id } = useParams();
-  const { data, dateSeans } = useSelector( store => store.client );
+  const { data, dateSeans, selectSeats } = useSelector( store => store.client );
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
@@ -37,7 +38,12 @@ function HallPage(props) {
             </div>
           </div>
           <HallClient rows={data.hall.rows} places={data.hall.places} seats={data.hall.seats} />
-          <button className="acceptin-button" onClick={()=>{navigate('/payment')}} >Забронировать</button>
+          {
+            !!selectSeats.length && <Button handleClick={()=>{navigate('/payment')}} title='Забронировать' type='submit' />
+          }
+          {
+            !selectSeats.length && <Button title='Выберите место'/>
+          }
         </section>}     
       </Main>
     </ClientBackgroundWrapper>

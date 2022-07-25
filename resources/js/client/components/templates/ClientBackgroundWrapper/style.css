@@ -162,6 +162,7 @@ body {
   font-size: 0;
 }
 .movie .movie-seances__hall .movie-seances__time-block {
+  cursor: pointer;
   display: inline-block;
   margin-bottom: 4px;
 }
@@ -420,6 +421,7 @@ body {
 
 @media screen and (min-width: 479px) {
   .page-nav .page-nav__day {
+    cursor: pointer;
     padding: 1rem 2rem;
   }
 }
