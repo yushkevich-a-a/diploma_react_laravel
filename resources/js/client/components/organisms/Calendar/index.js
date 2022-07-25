@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux';
 import { format, addDays, differenceInDays  } from 'date-fns';
 import { ru } from 'date-fns/locale'
-import { fetchSelectDate } from '../../../../store/clientReducer/action';
+import { fetchSelectDate } from '../../../../store/clientReducer/clientSlice';
 
 function Calendar(props) {
-  const { dateSeans } = useSelector( store => store.clientReducer);
+  const { dateSeans } = useSelector( store => store.client);
   const dispatch = useDispatch();
   const [ dateList, setDateList ] = useState([]);
   const [ startDay, setStartDay ] = useState(new Date());

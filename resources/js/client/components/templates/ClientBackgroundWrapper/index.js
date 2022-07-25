@@ -8,7 +8,7 @@ import Error from '../../organisms/Error';
 import GlobalLoader from '../../organisms/Loaders/GlobalLoader';
 
 function ClientBackgroundWrapper(props) {
-  const { loading, error } = useSelector( store => store.clientReducer );
+  const { loading, error } = useSelector( store => store.client );
   document.body.style.backgroundImage = `url(${baсkground})`;
   document.body.style.backgroundPosition = 'right';
 

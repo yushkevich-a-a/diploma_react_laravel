@@ -37,7 +37,7 @@ const adminSlice = createSlice({
       state.error = null;
     },
     resetState (state) {
-      state = initialState;
+      state = {...initialState};
     }
   }
 })

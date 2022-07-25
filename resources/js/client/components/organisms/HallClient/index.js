@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeSeat, selectSeat } from '../../../../store/clientReducer/action';
+import { removeSeat, selectSeat } from '../../../../store/clientReducer/clientSlice';
 
 function HallClient(props) {
-  const { data, selectSeats } = useSelector( store => store.clientReducer );
+  const { data, selectSeats } = useSelector( store => store.client );
   const { rows, places, seats }= props;
   const dispatch = useDispatch()
 

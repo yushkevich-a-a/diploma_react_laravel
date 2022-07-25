@@ -6,10 +6,10 @@ import Main from '../../organisms/Main';
 import { getHoursAndMinutes } from '../../../../lib/functions';
 import { useNavigate } from 'react-router';
 import { postRequest } from '../../../../lib/api';
-import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/action';
+import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/clientSlice';
 
 function PaymentPage(props) {
-  const { data, selectSeats, dateSeans } = useSelector( store => store.clientReducer );
+  const { data, selectSeats, dateSeans } = useSelector( store => store.client );
   const [ orderData, setOrderData ] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();

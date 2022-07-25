@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { parse, getMilliseconds  } from 'date-fns';
 
 function MovieSeansHall(props) {
-  const { dateSeans } = useSelector( store => store.clientReducer );
+  const { dateSeans } = useSelector( store => store.client );
   const { item } = props;
   const navigate = useNavigate();
   const dateSeansMilliseconds = parse(dateSeans, 'dd-MM-yyyy', new Date()).getTime();

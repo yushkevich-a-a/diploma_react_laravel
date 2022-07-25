@@ -50,11 +50,11 @@ function EditHall(props) {
         item.number_seat = (item.status === 'disable') ? 0 : numberSeat++;
         return item;
       })
-
       const data = await postRequest('/seats', {...hallData, 
                                               rows: Number(hallData.rows), 
                                               places: Number(hallData.places), 
                                               seats: prepareSeats});
+
       dispatch(fetchDataComplete());
       setHallData( prevState => ({...prevState, seats: data.data}));                                 
     } catch (e) {

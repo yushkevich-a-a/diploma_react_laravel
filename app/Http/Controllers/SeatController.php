@@ -18,6 +18,7 @@ class SeatController extends Controller
     {   
         $hall = Hall::firstWhere("id", $request->id);
         if ($hall->rows !== $request->rows || $hall->places !== $request->places) {
+            // var_dump($$hall->rows !== $request->rows);
             $hall->rows = $request->rows;
             $hall->places = $request->places;
             $hall->save();
@@ -29,6 +30,7 @@ class SeatController extends Controller
                 ]);
             }
         } else {
+            var_dump($hall->rows !== $request->rows);
             foreach ($request->seats as $seat){
                 $seatEdit = Seat::firstWhere('id', $seat['id']);
                 $seatEdit->status = $seat['status'];

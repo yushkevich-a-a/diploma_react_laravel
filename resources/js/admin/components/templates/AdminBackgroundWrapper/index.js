@@ -19,4 +19,4 @@ function AdminBackgroundWrapper(props) {
 
 AdminBackgroundWrapper.propTypes = {}
 
-export default AdminBackgroundWrapper
+export default AdminBackgroundWrapper;

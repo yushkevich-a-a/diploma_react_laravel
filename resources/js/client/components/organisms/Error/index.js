@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import './style.css';
-import { fetchErrorCLientComplete } from '../../../../store/clientReducer/action';
+import { fetchErrorCLientComplete } from '../../../../store/clientReducer/clientSlice';
 
 function Error(props) {
   const { error } = props;

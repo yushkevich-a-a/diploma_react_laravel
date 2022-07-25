@@ -7,7 +7,7 @@ import Main from '../../organisms/Main';
 import { getRequest } from '../../../../lib/api';
 import Film from '../../organisms/Film';
 import { useDispatch } from 'react-redux';
-import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/action';
+import { fetchClientComplete, fetchDataClient, fetchErrorCLient } from '../../../../store/clientReducer/clientSlice';
 
 function ClientPage(props) {
   const [ data, setData ] = useState(null);

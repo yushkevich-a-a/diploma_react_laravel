@@ -10211,7 +10211,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/addDays/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/differenceInDays/index.js");
 /* harmony import */ var date_fns_locale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns/locale */ "./node_modules/date-fns/esm/locale/ru/index.js");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -10236,7 +10236,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Calendar(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       dateSeans = _useSelector.dateSeans;
 
@@ -10255,7 +10255,7 @@ function Calendar(props) {
   var today = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'dd-MM-yyyy');
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (dateSeans === null) {
-      dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__.fetchSelectDate)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'dd-MM-yyyy')));
+      dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSelectDate)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'dd-MM-yyyy')));
     }
 
     createDateList(startDay);
@@ -10273,7 +10273,7 @@ function Calendar(props) {
   };
 
   var handleClick = function handleClick(date) {
-    dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__.fetchSelectDate)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(date, 'dd-MM-yyyy')));
+    dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSelectDate)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(date, 'dd-MM-yyyy')));
   };
 
   var handleAddToStartDay = function handleAddToStartDay() {
@@ -10337,7 +10337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./resources/js/client/components/organisms/Error/style.css");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -10354,7 +10354,7 @@ function Error(props) {
     setTimeout(function () {
       element.current.classList.add('hide_error');
       setTimeout(function () {
-        dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_3__.fetchErrorCLientComplete)());
+        dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_3__.fetchErrorCLientComplete)());
       }, 2000);
     }, 2000);
   }, []);
@@ -10451,7 +10451,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -10462,7 +10462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function HallClient(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       data = _useSelector.data,
       selectSeats = _useSelector.selectSeats;
@@ -10480,10 +10480,10 @@ function HallClient(props) {
     if (selectSeats.find(function (item) {
       return item.number_seat === seat.number_seat;
     })) {
-      return dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__.removeSeat)(seat.number_seat));
+      return dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__.removeSeat)(seat.number_seat));
     }
 
-    dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_2__.selectSeat)(seat));
+    dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_2__.selectSeat)(seat));
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -10716,7 +10716,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function MovieSeansHall(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       dateSeans = _useSelector.dateSeans;
 
@@ -10778,7 +10778,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../lib/api */ "./resources/js/lib/api.js");
 /* harmony import */ var _organisms_Film__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/Film */ "./resources/js/client/components/organisms/Film/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -10828,7 +10828,7 @@ function ClientPage(props) {
         switch (_context.prev = _context.next) {
           case 0:
             localStorage.clear();
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_8__.fetchDataClient)());
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchDataClient)());
             _context.prev = 2;
             _context.next = 5;
             return (0,_lib_api__WEBPACK_IMPORTED_MODULE_5__.getRequest)('/client');
@@ -10836,14 +10836,14 @@ function ClientPage(props) {
           case 5:
             _data = _context.sent;
             setData(_data);
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_8__.fetchClientComplete)());
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchClientComplete)());
             _context.next = 13;
             break;
 
           case 10:
             _context.prev = 10;
             _context.t0 = _context["catch"](2);
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_8__.fetchErrorCLient)(_context.t0.message));
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_8__.fetchErrorCLient)(_context.t0.message));
 
           case 13:
           case "end":
@@ -10891,7 +10891,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../lib/functions */ "./resources/js/lib/functions.js");
 /* harmony import */ var _organisms_HallClient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../organisms/HallClient */ "./resources/js/client/components/organisms/HallClient/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -10919,7 +10919,7 @@ function HallPage(props) {
       seans_id = _useParams.seans_id;
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       data = _useSelector.data,
       dateSeans = _useSelector.dateSeans;
@@ -10933,21 +10933,21 @@ function HallPage(props) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_7__.fetchDataClient)());
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_7__.fetchDataClient)());
             _context.prev = 1;
             _context.next = 4;
             return (0,_lib_api__WEBPACK_IMPORTED_MODULE_3__.getRequest)("/client/seans/".concat(seans_id, "/date/").concat(dateSeans));
 
           case 4:
             _data = _context.sent;
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_7__.fetchLoadingSuccess)(_data));
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_7__.fetchLoadingSuccess)(_data));
             _context.next = 11;
             break;
 
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](1);
-            dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_7__.fetchErrorCLient)(_context.t0.message));
+            dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_7__.fetchErrorCLient)(_context.t0.message));
 
           case 11:
           case "end":
@@ -11014,7 +11014,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../lib/functions */ "./resources/js/lib/functions.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
 /* harmony import */ var _lib_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../lib/api */ "./resources/js/lib/api.js");
-/* harmony import */ var _store_clientReducer_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../store/clientReducer/action */ "./resources/js/store/clientReducer/action.js");
+/* harmony import */ var _store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../store/clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -11051,7 +11051,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function PaymentPage(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       data = _useSelector.data,
       selectSeats = _useSelector.selectSeats,
@@ -11088,7 +11088,7 @@ function PaymentPage(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_6__.fetchDataClient)());
+              dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchDataClient)());
               _context.prev = 1;
               stringToQR = "\u0411\u0438\u043B\u0435\u0442 \u043D\u0430 \u0444\u0438\u043B\u044C\u043C: ".concat(data.film.title, "\n\u041C\u0435\u0441\u0442\u0430: ").concat(selectSeats.map(function (item) {
                 return item.number_seat;
@@ -11106,14 +11106,14 @@ function PaymentPage(props) {
               respData = _context.sent;
               setOrderData(respData);
               localStorage.clear();
-              dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_6__.fetchClientComplete)());
+              dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchClientComplete)());
               _context.next = 15;
               break;
 
             case 12:
               _context.prev = 12;
               _context.t0 = _context["catch"](1);
-              dispatch((0,_store_clientReducer_action__WEBPACK_IMPORTED_MODULE_6__.fetchErrorCLient)(_context.t0.message));
+              dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchErrorCLient)(_context.t0.message));
 
             case 15:
             case "end":
@@ -11237,7 +11237,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function ClientBackgroundWrapper(props) {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (store) {
-    return store.clientReducer;
+    return store.client;
   }),
       loading = _useSelector.loading,
       error = _useSelector.error;
@@ -11679,6 +11679,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var initialState = {
@@ -11716,7 +11722,7 @@ var adminSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
       state.error = null;
     },
     resetState: function resetState(state) {
-      state = initialState;
+      state = _objectSpread({}, initialState);
     }
   }
 });
@@ -11806,15 +11812,16 @@ var fetchFilms = function fetchFilms() {
 
 /***/ }),
 
-/***/ "./resources/js/store/clientReducer/action.js":
-/*!****************************************************!*\
-  !*** ./resources/js/store/clientReducer/action.js ***!
-  \****************************************************/
+/***/ "./resources/js/store/clientReducer/clientSlice.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/store/clientReducer/clientSlice.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "fetchClientComplete": () => (/* binding */ fetchClientComplete),
 /* harmony export */   "fetchDataClient": () => (/* binding */ fetchDataClient),
 /* harmony export */   "fetchErrorCLient": () => (/* binding */ fetchErrorCLient),
@@ -11825,66 +11832,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "resetStateClient": () => (/* binding */ resetStateClient),
 /* harmony export */   "selectSeat": () => (/* binding */ selectSeat)
 /* harmony export */ });
-var fetchDataClient = function fetchDataClient() {
-  return {
-    type: 'LOADING_DATA_CLIENT'
-  };
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  loading: false,
+  error: null,
+  data: JSON.parse(localStorage.getItem('clientData')) || null,
+  selectSeats: JSON.parse(localStorage.getItem('selectSeats')) || [],
+  dateSeans: JSON.parse(localStorage.getItem('dateSeans')) || null
 };
-var fetchClientComplete = function fetchClientComplete() {
-  return {
-    type: 'LOADING_CLIENT_COMPLETE'
-  };
-};
-var fetchLoadingSuccess = function fetchLoadingSuccess(data) {
-  return {
-    type: 'LOADING_CLIENT_SUCCESS',
-    payload: {
-      data: data
+var clientSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+  name: 'client',
+  initialState: initialState,
+  reducers: {
+    fetchDataClient: function fetchDataClient(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchClientComplete: function fetchClientComplete(state) {
+      state.loading = false;
+    },
+    fetchLoadingSuccess: function fetchLoadingSuccess(state, action) {
+      localStorage.setItem('clientData', JSON.stringify(action.payload));
+      state.loading = false;
+      state.loading = null;
+      state.data = action.payload;
+    },
+    selectSeat: function selectSeat(state, action) {
+      state.selectSeats.push(action.payload);
+      console.log(state.selectSeats);
+      localStorage.setItem('selectSeats', JSON.stringify(state.selectSeats));
+      state.loading = false;
+      state.loading = null;
+    },
+    removeSeat: function removeSeat(state, action) {
+      var selectSeatsUpdated = state.selectSeats.filter(function (item) {
+        return item.number_seat !== action.payload;
+      });
+      localStorage.setItem('selectSeats', JSON.stringify(selectSeatsUpdated));
+      state.selectSeats = selectSeatsUpdated;
+    },
+    fetchErrorCLient: function fetchErrorCLient(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    fetchErrorCLientComplete: function fetchErrorCLientComplete(state) {
+      state.error = null;
+    },
+    fetchSelectDate: function fetchSelectDate(state, action) {
+      localStorage.setItem('dateSeans', JSON.stringify(action.payload));
+      state.dateSeans = action.payload;
+    },
+    resetStateClient: function resetStateClient(state) {
+      state = _objectSpread({}, initialState);
     }
-  };
-};
-var selectSeat = function selectSeat(add_seat) {
-  return {
-    type: 'SELECT_SEAT',
-    payload: {
-      add_seat: add_seat
-    }
-  };
-};
-var removeSeat = function removeSeat(remove_id) {
-  return {
-    type: 'REMOVE_SEAT',
-    payload: {
-      remove_id: remove_id
-    }
-  };
-};
-var fetchErrorCLient = function fetchErrorCLient(message) {
-  return {
-    type: 'FETCH_ERROR_CLIENT',
-    payload: {
-      message: message
-    }
-  };
-};
-var fetchErrorCLientComplete = function fetchErrorCLientComplete(message) {
-  return {
-    type: 'FETCH_ERROR_CLIENT_COMPLETE'
-  };
-};
-var fetchSelectDate = function fetchSelectDate(dateSeans) {
-  return {
-    type: 'SELECT_DATE',
-    payload: {
-      dateSeans: dateSeans
-    }
-  };
-};
-var resetStateClient = function resetStateClient() {
-  return {
-    type: 'RESET_STATE_CLIENT'
-  };
-};
+  }
+});
+var _clientSlice$actions = clientSlice.actions,
+    fetchDataClient = _clientSlice$actions.fetchDataClient,
+    fetchClientComplete = _clientSlice$actions.fetchClientComplete,
+    fetchLoadingSuccess = _clientSlice$actions.fetchLoadingSuccess,
+    selectSeat = _clientSlice$actions.selectSeat,
+    removeSeat = _clientSlice$actions.removeSeat,
+    fetchErrorCLient = _clientSlice$actions.fetchErrorCLient,
+    fetchErrorCLientComplete = _clientSlice$actions.fetchErrorCLientComplete,
+    fetchSelectDate = _clientSlice$actions.fetchSelectDate,
+    resetStateClient = _clientSlice$actions.resetStateClient;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clientSlice.reducer);
 
 /***/ }),
 
@@ -11899,25 +11920,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _adminReducer_adminSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./adminReducer/adminSlice */ "./resources/js/store/adminReducer/adminSlice.js");
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
-// import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-// import thunk from 'redux-thunk';
-// import serviceAdminReducer from './adminReducer/reducer';
-// import serviceClientReducer from './clientReducer/reducer';
- // const reducers = combineReducers({
-//   clientReducer: serviceClientReducer,
-//   adminReducer: serviceAdminReducer,
-// });
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
-// export default store;
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clientReducer/clientSlice */ "./resources/js/store/clientReducer/clientSlice.js");
+/* harmony import */ var _adminReducer_adminSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./adminReducer/adminSlice */ "./resources/js/store/adminReducer/adminSlice.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.configureStore)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.configureStore)({
   reducer: {
-    // clientReducer: serviceClientReducer,
-    admin: _adminReducer_adminSlice__WEBPACK_IMPORTED_MODULE_0__["default"]
+    client: _clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_0__["default"],
+    admin: _adminReducer_adminSlice__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 }));
 
