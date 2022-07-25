@@ -15,7 +15,7 @@ function PaymentPage(props) {
 
   useEffect(() => {
     if (data === null) {
-      navigate('/client');
+      navigate('/client', {replace: true});
     }
   }, []) 
 
@@ -43,8 +43,6 @@ function PaymentPage(props) {
       const respData = await postRequest('/client/ticket', obj);
       setOrderData(respData);
       dispatch(fetchClientComplete());
-      localStorage.clear();
-      dispatch(resetStateClient());
     } catch (e) {
       dispatch(fetchErrorCLient(e.message));
     }

@@ -8404,10 +8404,11 @@ function FilmOnTimeLine(props) {
   var handleClick = function handleClick(e) {
     e.stopPropagation();
     openPopupDeleteSession();
+    return;
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [film && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: film && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "conf-step__seances-movie",
       onClick: handleClick,
       style: {
@@ -8421,13 +8422,13 @@ function FilmOnTimeLine(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
         className: "conf-step__seances-movie-start",
         children: [timestartHours, ":", timestartMinutes]
+      }), openDelete && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Popups_DeleteSessionPopup__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        sessionId: item.id,
+        filmTitle: film.title,
+        handleUpdateData: handleUpdateData,
+        handleClosePopup: openPopupDeleteSession
       })]
-    }), openDelete && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Popups_DeleteSessionPopup__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      sessionId: item.id,
-      filmTitle: film.title,
-      handleUpdateData: handleUpdateData,
-      handleClosePopup: openPopupDeleteSession
-    })]
+    })
   });
 }
 
@@ -10917,7 +10918,9 @@ function Header(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("header", {
     className: "page-header",
     onClick: function onClick() {
-      navigate('/');
+      navigate('/', {
+        replace: true
+      });
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h1", {
       className: "page-header__title",
@@ -11407,7 +11410,9 @@ function PaymentPage(props) {
   var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (data === null) {
-      navigate('/client');
+      navigate('/client', {
+        replace: true
+      });
     }
   }, []);
   var sumTickets = selectSeats.map(function (item) {
@@ -11445,22 +11450,20 @@ function PaymentPage(props) {
               respData = _context.sent;
               setOrderData(respData);
               dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchClientComplete)());
-              localStorage.clear();
-              dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.resetStateClient)());
-              _context.next = 16;
+              _context.next = 14;
               break;
 
-            case 13:
-              _context.prev = 13;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](1);
               dispatch((0,_store_clientReducer_clientSlice__WEBPACK_IMPORTED_MODULE_6__.fetchErrorCLient)(_context.t0.message));
 
-            case 16:
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 13]]);
+      }, _callee, null, [[1, 11]]);
     }));
 
     return function handleSubmit() {
