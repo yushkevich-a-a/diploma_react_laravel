@@ -6,7 +6,6 @@ import SeansHall from '../SeansHall';
 function ListSeansHall(props) {
   const { data } = useSelector( store => store.admin );
 
-
   return (
     <div className="conf-step__seances">
       {

@@ -4,19 +4,22 @@ import { deleteRequest } from '../../../../../lib/api';
 import Popup from '../Popup';
 import Button from '../../../atoms/Button/Button';
 import { useDispatch } from 'react-redux';
-import { fetchData, fetchDataComplete, fetchDataError } from '../../../../../store/adminReducer/adminSlice';
+import { fetchData, fetchDataComplete, fetchDataError, fetchDataSuccess, updateAllData } from '../../../../../store/adminReducer/adminSlice';
 
-function DeleteSessionPopup(props) {
-  const { handleUpdateData, handleClosePopup, sessionId, filmTitle } = props;
+function DeleteFilmPopup(props) {
+  const { handleUpdateData, handleClosePopup, filmId, filmTitle } = props;
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(fetchData());
     try {
-      const data = await deleteRequest(`/session/${sessionId}`);
+      const { data } = await deleteRequest(`/film/${filmId}`);
       dispatch(fetchDataComplete());
-      handleUpdateData(data.data);
+      handleClosePopup();
+      const films = data.films;
+      const hallData = data.data;
+      dispatch(updateAllData({films, hallData}));
       handleClosePopup();
     } catch (e) {
       dispatch(fetchDataError(e.message));
@@ -24,9 +27,9 @@ function DeleteSessionPopup(props) {
   }
 
   return (
-    <Popup title={'Снятие с сеанса'} handleClose={handleClosePopup}>
+    <Popup title={'Удаление фильма'} handleClose={handleClosePopup}>
       <form action="delete_hall" method="post" acceptCharset="utf-8">
-        <p className="conf-step__paragraph">Вы действительно хотите снять с сеанса фильм <span>{filmTitle}</span>?</p>
+        <p className="conf-step__paragraph">Вы действительно хотите удалить фильм "<span>{filmTitle}</span>"?</p>
         <div className="conf-step__buttons text-center">
           <Button type="submit" handleClick={handleSubmit} title='удалить'/>
           <Button handleClick={handleClosePopup} title='Отменить' style='regular'/>   
@@ -36,6 +39,6 @@ function DeleteSessionPopup(props) {
   )
 }
 
-DeleteSessionPopup.propTypes = {}
+DeleteFilmPopup.propTypes = {}
 
-export default DeleteSessionPopup
+export default DeleteFilmPopup

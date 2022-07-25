@@ -24,18 +24,21 @@ function FilmOnTimeLine(props) {
   }
 
   return (
-      <div className="conf-step__seances-movie" onClick={handleClick}
-      style={{width: `${item.duraton_session * 0.5}px`, backgroundColor: colorFilm[filmIndex], left: `${item.start_session * 0.5}px`}}>
+    <>
+      { film && <div className="conf-step__seances-movie" onClick={handleClick}
+        style={{width: `${item.duraton_session * 0.5}px`, backgroundColor: colorFilm[filmIndex], left: `${item.start_session * 0.5}px`}}>
         <p className="conf-step__seances-movie-title">{film.title}</p>
         <p className="conf-step__seances-movie-start">{timestartHours}:{timestartMinutes}</p>
-        {
-          openDelete && <DeleteSessionPopup
-            sessionId={item.id}
-            filmTitle={film.title}
-            handleUpdateData={handleUpdateData}
-            handleClosePopup={openPopupDeleteSession}/>
-        }
-      </div>
+      </div>}
+      {
+        openDelete && <DeleteSessionPopup
+          sessionId={item.id}
+          filmTitle={film.title}
+          handleUpdateData={handleUpdateData}
+          handleClosePopup={openPopupDeleteSession}/>
+      }
+    </>
+
   )
 }
 

@@ -32,8 +32,6 @@ function CreateFilmPopup(props) {
     setDataField( prevState => ({...prevState, [name]: file}));
   }
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(fetchData());

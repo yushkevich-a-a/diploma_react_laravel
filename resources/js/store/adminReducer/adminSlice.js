@@ -36,6 +36,10 @@ const adminSlice = createSlice({
     fetchErrorComplete (state) {
       state.error = null;
     },
+    updateAllData (state, action) {
+        state.films = action.payload.films;
+        state.data = action.payload.hallData;
+      },
     resetState (state) {
       state = {...initialState};
     }
@@ -44,6 +48,7 @@ const adminSlice = createSlice({
 
 export const {
   fetchData,
+  updateAllData,
   fetchDataComplete,
   fetchDataSuccess,
   fetchFilmsSuccess,

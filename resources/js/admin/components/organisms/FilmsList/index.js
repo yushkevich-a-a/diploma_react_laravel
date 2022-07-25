@@ -1,19 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import Film from '../Film';
+import DeleteFilmPopup from '../Popups/DeleteFilm';
 
 function FilmsList(props) {
   const { films } = useSelector( store => store.admin );
+  const [ filmOnDelete, setFilmOnDelete ] = useState(null);
+  const [ openDelete, setDeleteIsOpen ] = useState(false);
+
+  const openPopupDeleteSession = () => {
+    setDeleteIsOpen(!openDelete);
+  }
+
+  const handleCLickOnFilm = (data) => {
+    openPopupDeleteSession();
+    setFilmOnDelete(data)
+  }
+
+  const handleClosePopup = () => {
+    handleCLickOnFilm(null);
+  }
 
   return (
     <div className="conf-step__movies">
       {
-        films.map( item => <div className="conf-step__movie" key={item.id}>
-          <img className="conf-step__movie-poster" alt="poster" src={item.url} />
-          <h3 className="conf-step__movie-title">{item.title}</h3>
-          <p className="conf-step__movie-duration">{item.duration} минут</p>
-        </div> )
-      }        
+        films.map( item => <Film key={item.id} data={item} handleCLickOnFilm={handleCLickOnFilm}/>)
+      }
+      {
+        openDelete && <DeleteFilmPopup handleClosePopup={handleClosePopup} filmTitle={filmOnDelete.title} filmId={filmOnDelete.id}/>
+      }
     </div>
   )
 }

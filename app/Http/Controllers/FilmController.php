@@ -77,8 +77,14 @@ class FilmController extends Controller
             return response('not found', 404);
         }
 
+        $preparedData = [
+            "films" => Film::all(),
+            "data" => Hall::all(),
+        ];
+
         return response()->json([
-            "status" => "success"
+            "status" => "success",
+            "data" => $preparedData,
         ],201);
     }
 }
