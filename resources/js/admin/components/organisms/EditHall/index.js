@@ -70,12 +70,12 @@ function EditHall(props) {
           <div className="conf-step__legend">
             <label className="conf-step__label">
               Рядов, шт
-              <input type="text" className="conf-step__input" name='rows' onChange={handleChangeAmountPlaces} value={hallData.rows} placeholder={hallData.rows} />
+              <input type="number" max={10} className="conf-step__input" name='rows' onChange={handleChangeAmountPlaces} value={hallData.rows} placeholder={hallData.rows} />
             </label>
             <span className="multiplier">x</span>
             <label className="conf-step__label">
               Мест, шт
-              <input type="text" className="conf-step__input" name='places' onChange={handleChangeAmountPlaces} value={hallData.places} placeholder={hallData.places} />
+              <input type="number" max={10} className="conf-step__input" name='places' onChange={handleChangeAmountPlaces} value={hallData.places} placeholder={hallData.places} />
             </label>
           </div>
           <p className="conf-step__paragraph">Теперь вы можете указать типы кресел на схеме зала:</p>
