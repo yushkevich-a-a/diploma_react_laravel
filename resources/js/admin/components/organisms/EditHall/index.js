@@ -32,7 +32,7 @@ function EditHall(props) {
 
   const handleChangeAmountPlaces = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value > 10 ? 10 : e.target.value;
     const count = (name === 'rows') ? value * hallData.places : value * hallData.rows;
     const seats = [];
     for (let i = 0; i < count; i++) {
